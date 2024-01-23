@@ -75,11 +75,19 @@ class BannerController extends Controller
         $request->validate([
             'banner_title' => 'required|max:255',
         ]);
-        Photo::upload($request->banner_image, 'files/banner', $request->banner_title);
+
+        $banner = Banner::find($id);
+
+        if ($request->has('banner_image')) {
+            Photo::delete('files/banner',$banner->banner_image);
+            Photo::upload($request->banner_image, 'files/banner', $request->banner_title);
+        }
+
+
         Banner::where('id', $id)->update([
             'banner_category' =>$request->banner_category,
             'banner_title' =>$request->banner_title,
-            'banner_image' =>Photo::$name,
+            'banner_image' =>$request->has('banner_image')? Photo::$name:null,
             'link' =>$request->link,
             'banner_description' =>$request->banner_description,
             'updated_at'=>Carbon::now(),

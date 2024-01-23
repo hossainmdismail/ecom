@@ -3,8 +3,8 @@
 <section class="content-main">
     <div class="content-header">
         <div>
-            <h2 class="content-title card-title">Category List </h2>
-            {{-- <p>Here Your All Catego.</p> --}}
+            <h2 class="content-title card-title">Banner List </h2>
+            <p>Here Your All Catego.</p>
         </div>
         <div>
             <input type="text" placeholder="Search order ID" class="form-control bg-white">
@@ -57,14 +57,7 @@
                             <td class="text-end">
                                 <a href="{{ route('banner.edit', $request->id) }}" class="btn btn-md rounded font-sm">Edit</a>
                                 <a href="{{ route('category.destroy', $request->id) }}" class="btn btn-md bg-warning rounded font-sm">Delete</a>
-                                {{-- <div class="dropdown">
-                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">View detail</a>
-                                        <a class="dropdown-item" href="#">Edit info</a>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                </div> <!-- dropdown //end --> --}}
+
                             </td>
                         </tr>
                         @endforeach

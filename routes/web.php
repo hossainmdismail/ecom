@@ -20,22 +20,7 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Admin
-// <<<<<<< Updated upstream
-// Route::middleware('admin')->group(function () {
-//     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-//     Route::resource('/country', CountryController::class);
-//     Route::get('/create/admin', [AdminController::class, 'create_admin'])->name('create.admin');
-//     Route::post('/create/role/admin', [AdminController::class, 'create_role_admin'])->name('create.role.admin');
-//     Route::resource('/category', CategoryController::class);
-//     Route::resource('/banner', BannerController::class);
-//     Route::resource('/campaign', CampaignController::class);
-//     Route::resource('/variation', VariationController::class);
-//     Route::resource('/product', ProductController::class);
-//     Route::resource('/variation_option', VariationOptionController::class);
-// });
-// =======
-// Route::middleware('admin')->group(function () {
+
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::resource('/country', CountryController::class);
 Route::get('/create/admin', [AdminController::class, 'create_admin'])->name('create.admin');
