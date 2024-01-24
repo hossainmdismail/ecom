@@ -17,7 +17,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend') }}/imgs/theme/favicon.svg">
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/maind134.css?v=3.4">
-
+    @livewireStyles
 </head>
 
 <body>
@@ -33,7 +33,7 @@
     @include('frontend.layouts.footer')
     {{-- footer --}}
     <!-- Preloader Start -->
-    <div id="preloader-active">
+    {{-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="text-center">
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Vendor JS-->
     <script src="{{ asset('frontend') }}/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="{{ asset('frontend') }}/js/vendor/jquery-3.6.0.min.js"></script>
@@ -71,7 +71,7 @@
     <!-- Template  JS -->
     <script src="{{ asset('frontend') }}/js/maind134.js?v=3.4"></script>
     <script src="{{ asset('frontend') }}/js/shopd134.js?v=3.4"></script>
-
+    @livewireScripts
 
 </body>
 
