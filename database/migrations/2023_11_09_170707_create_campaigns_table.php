@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('campaign_for');
             $table->string('campaign_name');
             $table->string('campaign_image');
+            $table->enum('image_type',['horizontal','vertical']);
             $table->integer('percentage');
             $table->timestamp('start')->default(now()); // Set a default value for 'start'
             $table->timestamp('end')->default(now());   // Set a default value for 'end'

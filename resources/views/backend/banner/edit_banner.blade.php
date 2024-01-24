@@ -17,7 +17,7 @@
                     <h4>Edit Category</h4>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('banner.update', $request->id) }}" method="POST" enctype="multipart/ form-data">
+                    <form action="{{ route('banner.update', $request->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
@@ -41,12 +41,6 @@
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Banner Image</label>
                                     <input type="file" class="form-control" name="banner_image">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="mb-4">
-                                    <label for="product_name" class="form-label">Link</label>
-                                    <input type="text" placeholder="Entire Email" class="form-control" name="link" value="{{ $request->link }}">
                                 </div>
                             </div>
                             <div class="col-lg-6">

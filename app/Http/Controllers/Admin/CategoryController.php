@@ -7,6 +7,7 @@ use App\Models\ProductCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Photo;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -33,16 +34,17 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_name' => 'required|unique:product_categories|max:255',
+            'category_name' => 'required',
         ]);
         Photo::upload($request->category_image, 'files/category', $request->category_name);
         ProductCategory::insert([
-            'category_name' => $request->category_name,
-            'category_image' => Photo::$name,
-            'seo_title' => $request->seo_title,
-            'seo_description' => $request->seo_description,
-            'seo_tags' => $request->seo_tags,
-            'created_at' => Carbon::now(),
+            'category_name'     => $request->category_name,
+            'slugs'             => Str::slug($request->category_name),
+            'category_image'    => Photo::$name,
+            'seo_title'         => $request->seo_title,
+            'seo_description'   => $request->seo_description,
+            'seo_tags'          => $request->seo_tags,
+            'created_at'        => Carbon::now(),
         ]);
         return back()->with('succ', 'Category added...');
     }
@@ -69,17 +71,22 @@ class CategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // dd($request->all());
         $request->validate([
-            'category_name' => 'required|unique:product_categories|max:255',
+            'category_name' => 'required',
         ]);
-        Photo::upload($request->category_image, 'files/category', $request->category_name);
+
+        if ($request->category_image != null) {
+            Photo::upload($request->category_image, 'files/category', $request->category_name);
+        }
         ProductCategory::where('id', $id)->update([
-            'category_name' => $request->category_name,
-            'category_image' => Photo::$name,
-            'seo_title' => $request->seo_title,
-            'seo_description' => $request->seo_description,
-            'seo_tags' => $request->seo_tags,
-            'updated_at' => Carbon::now(),
+            'category_name'     => $request->category_name,
+            'slugs'             => Str::slug($request->category_name),
+            'category_image'    => $request->category_image != null? Photo::$name:null,
+            'seo_title'         => $request->seo_title,
+            'seo_description'   => $request->seo_description,
+            'seo_tags'          => $request->seo_tags,
+            'updated_at'        => Carbon::now(),
         ]);
         return back();
     }

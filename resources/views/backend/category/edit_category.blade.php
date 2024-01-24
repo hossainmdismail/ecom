@@ -13,8 +13,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-4">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h4>Edit Category</h4>
+
+                    <a href="{{ route('category.index') }}">List</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
@@ -38,12 +40,12 @@
                                     <input type="file" class="form-control" name="category_image">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Category Icon</label>
                                     <input type="file" class="form-control" name="category_icon">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">SEO Titile</label>
@@ -62,10 +64,10 @@
                                     <input type="text" placeholder="Entire Tags" class="form-control"  name="seo_tags" value="{{ $category->seo_tags }}">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-12">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label"></label>
-                                    <button type="submit" class="btn btn-light rounded font-sm mr-5 text-body hover-up">+ Admin</button>
+                                    <button type="submit" class="btn btn-light rounded font-sm mr-5 text-body hover-up">+ Update Category</button>
                                 </div>
                             </div>
                         </div>

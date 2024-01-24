@@ -11,6 +11,7 @@ use App\Models\Service;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Photo;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -56,6 +57,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->category_id       = $request->category_id;
         $product->name              = $request->product_name;
+        $product->slugs             = Str::slug($request->product_name);
         $product->short_description = $request->short_description;
         $product->description       = $request->description;
         $product->discount          = $request->discount;
@@ -133,6 +135,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->category_id       = $request->category_id;
         $product->name              = $request->product_name;
+        $product->slugs             = Str::slug($request->product_name);
         $product->short_description = $request->short_description;
         $product->description       = $request->description;
         $product->discount          = $request->discount;

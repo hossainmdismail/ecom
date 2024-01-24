@@ -50,7 +50,7 @@
                         <tr>
                             <td><b>{{ $request->category->category_name }}</b></td>
                             <td>
-                                <img style="width: 50px; height: 50px;" src="{{ asset('files/banner/'. $request->banner_image) }}" alt="">
+                                <img style="width: 50px;" src="{{ asset('files/banner/'. $request->banner_image) }}" alt="">
                             </td>
                             <td><b>{{ $request->banner_title }}</b></td>
                             <td><b>{{ $request->link }}</b></td>

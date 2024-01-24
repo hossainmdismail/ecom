@@ -33,17 +33,27 @@ class CampaignController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'campaign_name' => 'required|max:255',
+            'campaign_name'     => 'required|max:255',
+            'campaign_image'    => 'required',
+            'image_type'        => 'required',
         ]);
-        Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name);
+
+        $size = null;
+
+        if ($request->image_type == 'horizontal') {
+            Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name,[966,542]);
+        }elseif ($request->image_type == 'vertical') {
+            Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name,[600,712]);
+        }
         Campaign::insert([
-            'campaign_for' =>$request->campaign_for,
-            'campaign_name' =>$request->campaign_name,
-            'campaign_image' =>Photo::$name,
-            'percentage' =>$request->percentage,
-            'start' =>$request->start,
-            'end' =>$request->end,
-            'created_at'=>Carbon::now(),
+            'campaign_for'      => $request->campaign_for,
+            'campaign_name'     => $request->campaign_name,
+            'campaign_image'    => Photo::$name,
+            'image_type'        => $request->image_type,
+            'percentage'        => $request->percentage,
+            'start'             => $request->start,
+            'end'               => $request->end,
+            'created_at'        => Carbon::now(),
         ]);
         return back()->with('succ', 'Campaign added...');
     }
@@ -75,13 +85,14 @@ class CampaignController extends Controller
         ]);
         Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name);
         Campaign::where('id', $id)->update([
-            'campaign_for' =>$request->campaign_for,
-            'campaign_name' =>$request->campaign_name,
-            'campaign_image' =>Photo::$name,
-            'percentage' =>$request->percentage,
-            'start' =>$request->start,
-            'end' =>$request->end,
-            'created_at'=>Carbon::now(),
+            'campaign_for'      => $request->campaign_for,
+            'campaign_name'     => $request->campaign_name,
+            'campaign_image'    => Photo::$name,
+            'image_type'        => $request->image_type,
+            'percentage'        => $request->percentage,
+            'start'             => $request->start,
+            'end'               => $request->end,
+            'created_at'        => Carbon::now(),
         ]);
         return back()->with('succ', 'Campaign Updated...');
     }

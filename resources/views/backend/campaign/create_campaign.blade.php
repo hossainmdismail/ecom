@@ -32,19 +32,19 @@
                                     <input type="text" placeholder="Entire Name" class="form-control" name="campaign_name">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Start</label>
                                     <input type="date" placeholder="Entire Email" class="form-control" name="start">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">End</label>
                                     <input type="date" placeholder="Entire Email" class="form-control" name="end">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label">Percentage</label>
                                     <input type="number" class="form-control" name="percentage">
@@ -55,6 +55,14 @@
                                     <label for="product_name" class="form-label">Campaign Image</label>
                                     <input type="file" class="form-control" name="campaign_image">
                                 </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="product_name" class="form-label">Image type</label>
+                                <select class="form-select" name="image_type" id="">
+                                    <option value="">Select Type</option>
+                                    <option value="horizontal"><sup>(966*542)</sup> Horizontal</option>
+                                    <option value="vertical"><sup>(600*712)</sup> Vertical</option>
+                                </select>
                             </div>
                             <div class="col-lg-6">
                                 <div class="mb-4">

@@ -52,7 +52,7 @@
                         <tr>
                             <td><b>{{ $request->campaign_for }}</b></td>
                             <td>
-                                <img style="width: 50px; height: 50px;" src="{{ asset('files/campaign/'. $request->campaign_image) }}" alt="">
+                                <img style="width: 50px" src="{{ asset('files/campaign/'. $request->campaign_image) }}" alt="">
                             </td>
                             <td><b>{{ $request->campaign_name }}</b></td>
                             <td><b>{{ $request->percentage }}</b></td>
@@ -61,14 +61,6 @@
                             <td class="text-end">
                                 <a href="{{ route('campaign.edit', $request->id) }}" class="btn btn-md rounded font-sm">Edit</a>
                                 <a href="{{ route('category.destroy', $request->id) }}" class="btn btn-md bg-warning rounded font-sm">Delete</a>
-                                {{-- <div class="dropdown">
-                                    <a href="#" data-bs-toggle="dropdown" class="btn btn-light rounded btn-sm font-sm"> <i class="material-icons md-more_horiz"></i> </a>
-                                    <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="#">View detail</a>
-                                        <a class="dropdown-item" href="#">Edit info</a>
-                                        <a class="dropdown-item text-danger" href="#">Delete</a>
-                                    </div>
-                                </div> <!-- dropdown //end --> --}}
                             </td>
                         </tr>
                         @endforeach

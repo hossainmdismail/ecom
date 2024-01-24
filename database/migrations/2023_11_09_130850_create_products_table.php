@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('name');
+            $table->string('slugs');
             $table->longText('short_description');
             $table->longText('description');
             $table->bigInteger('discount')->default(0);
