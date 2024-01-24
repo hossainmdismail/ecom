@@ -377,9 +377,13 @@
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="shop-product-right.html">
-                                            <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
-                                            <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
+                                        <a href="{{ route('product.view',$latest->slugs) }}">
+                                            @if ($latest->images)
+                                                @foreach ($latest->images->take(2) as $key => $image)
+                                                    <img class="{{ $key+1 == 1 ? 'default-img':'hover-img' }}" src="{{ asset('files/product/'.$image->image) }}" alt="">
+                                                @endforeach
+                                            @endif
+                                            {{-- <img class="" src="assets/imgs/shop/product-2-2.jpg" alt=""> --}}
                                         </a>
                                     </div>
                                     <div class="product-action-1">
@@ -388,22 +392,24 @@
                                         <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">Hot x</span>
+                                        <span class="hot">New</span>
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop-grid-right.html">Music</a>
+                                        <a href="shop-grid-right.html">{{ $latest->category?$latest->category->category_name:'Random' }}</a>
                                     </div>
-                                    <h2><a href="shop-product-right.html">Donec ut nisl rutrum</a></h2>
-                                    <div class="rating-result" title="90%">
+                                    <h2><a href="{{ route('product.view',$latest->slugs) }}">{{ $latest->name }}</a></h2>
+                                    {{-- <div class="rating-result" title="90%">
                                         <span>
                                             <span>90%</span>
                                         </span>
-                                    </div>
+                                    </div> --}}
                                     <div class="product-price">
-                                        <span>$238.85 </span>
-                                        <span class="old-price">$245.8</span>
+                                        <span>৳ {{ $latest->finalPrice }}</span>
+                                        @if ($latest->discount != 0)
+                                            <span class="old-price">{{ $latest->price }}</span>
+                                        @endif
                                     </div>
                                     <div class="product-action-1 show">
                                         <a aria-label="Add To Cart" class="action-btn hover-up" href="shop-cart.html"><i class="fi-rs-shopping-bag-add"></i></a>

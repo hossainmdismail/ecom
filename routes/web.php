@@ -9,18 +9,23 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VariationController;
 use App\Http\Controllers\Admin\VariationOptionController;
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\ProductController as ControllersProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
+//Frontend
 Auth::routes();
 
 Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/product/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
 
 
+
+//Admin
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::resource('/country', CountryController::class);
 Route::get('/create/admin', [AdminController::class, 'create_admin'])->name('create.admin');

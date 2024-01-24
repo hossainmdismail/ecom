@@ -19,4 +19,14 @@ class Product extends Model
     {
         return $this->hasMany(ProductPhoto::class, 'product_id');
     }
+
+    function services()
+    {
+        return $this->hasMany(ProductService::class, 'product_id');
+    }
+
+    public function getFinalPriceAttribute()
+    {
+        return $this->price - ($this->price * $this->discount / 100);
+    }
 }

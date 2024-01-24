@@ -10,7 +10,7 @@ class Product extends Component
 
     public function render()
     {
-        $latest = ModelsProduct::latest()->get();
+        $latest = ModelsProduct::latest()->get()->take(8);
         return view('livewire..frontend.product',[
             'latests'       => $latest,
         ]);
