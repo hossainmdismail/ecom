@@ -21,7 +21,7 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/product/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
+Route::get('/products/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
 
 
 

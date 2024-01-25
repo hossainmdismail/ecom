@@ -19,6 +19,8 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->default(0.00);
             $table->string('link')->nullable();
             $table->integer('stock_status')->default(1);
+            $table->integer('featured')->default(0);
+            $table->integer('popular')->default(0);
             $table->integer('status')->default(1);
             $table->string('seo_title')->nullable();
             $table->longText('seo_description')->nullable();
