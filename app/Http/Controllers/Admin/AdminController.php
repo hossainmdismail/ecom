@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Photo;
+use Illuminate\Support\Facades\Cookie;
 
 class AdminController extends Controller
 {
@@ -14,9 +15,12 @@ class AdminController extends Controller
     {
         return view('backend.index');
     }
-    
+
     public function dashboard()
     {
+        $value = Cookie::get('product_ids');
+        dd($value);
+
         return view('backend.home.home');
     }
     function admin_login()
@@ -78,17 +82,19 @@ class AdminController extends Controller
         }
     }
 
-    // create admin for role 
-    function create_admin(){
+    // create admin for role
+    function create_admin()
+    {
         $super_admin = Admin::count();
         return view('backend.admin.create_admin', compact('super_admin'));
     }
-    function create_role_admin(Request $request){
+    function create_role_admin(Request $request)
+    {
         Photo::upload($request->profile, 'files/profile', $request->name);
-        
+
         Admin::insert([
-            'name' =>$request->name,
-            'profile' =>Photo::$name,
+            'name' => $request->name,
+            'profile' => Photo::$name,
             'email' => $request->email,
             'number' => $request->number,
             'role' => $request->role,

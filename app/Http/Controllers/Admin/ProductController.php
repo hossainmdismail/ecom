@@ -41,6 +41,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
 
         $request->validate([
             'btn'               => 'required',
@@ -65,6 +66,8 @@ class ProductController extends Controller
         $product->link              = $request->link;
         $product->stock_status      = $request->stock_status;
         $product->status            = $request->btn;
+        $product->featured          = $request->featured == 'on' ? 1 : 0;
+        $product->popular           = $request->popular == 'on' ? 1 : 0;
         $product->seo_title         = $request->seo_title;
         $product->seo_description   = $request->seo_description;
         $product->seo_tags          = $request->seo_tags;

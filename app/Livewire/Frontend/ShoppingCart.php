@@ -2,22 +2,32 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Helpers\CookieSD;
+use App\Models\Product;
 use Livewire\Component;
 
 class ShoppingCart extends Component
 {
-    public $products;
 
     protected $listeners = ['productAddedToCart' => 'loadCart'];
 
+    public $products = [];
+
+    public function mount()
+    {
+        $this->loadCart(); // Load cart data on initial render
+    }
+
     private function loadCart()
     {
-        $this->products = Product::where('stock_status',1)->get()->take(2);
-        // // Retrieve product IDs from the cookie
-        // $productIds = json_decode(request()->cookie('cart'), true);
+        // $cookieData = CookieSD::getProductIds();
+        // $this->products = Product::where('stock_status', 1)->get()->take(2);
 
-        // // Fetch product details based on IDs
-        // dd($productIds);
+        $cookieData = CookieSD::getProductIds();
+
+        $this->products = Product::whereIn('id', $cookieData)
+            ->where('stock_status', 1)
+            ->get();
     }
 
     public function render()

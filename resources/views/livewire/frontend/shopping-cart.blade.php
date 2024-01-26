@@ -1,6 +1,7 @@
 <div class="cart-dropdown-wrap cart-dropdown-hm2">
     <ul>
-        {{-- @foreach ($products as $product)
+        {{ $products }}
+        @foreach ($products as $product)
             <li>
                 <div class="shopping-cart-img">
                     <a href="shop-product-right.html"><img alt="Evara"
@@ -14,7 +15,7 @@
                     <a href="#"><i class="fi-rs-cross-small"></i></a>
                 </div>
             </li>
-        @endforeach --}}
+        @endforeach
     </ul>
     <div class="shopping-cart-footer">
         <div class="shopping-cart-total">

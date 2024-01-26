@@ -28,7 +28,8 @@
     },
     "autoload": {
         "files": [
-            "app/helper/Photo.php"
+            "app/helper/Photo.php",
+            "app/helper/CookieSD.php"
         ],
         "psr-4": {
             "App\\": "app/",
