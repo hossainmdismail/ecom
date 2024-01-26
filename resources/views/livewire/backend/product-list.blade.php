@@ -41,6 +41,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Status</th>
+                            <th scope="col">Market Status</th>
                             <th scope="col" class="text-end"> Action </th>
                         </tr>
                     </thead>
@@ -65,6 +66,21 @@
                                 <td>
                                     <span
                                         class="badge bg-success text-dark">{{ $request->status == 1 ? 'Active' : 'Draft' }}</span>
+                                </td>
+
+                                <td>
+                                    <div class="form-check form-switch">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Feature</label>
+                                        <input class="form-check-input" wire:click="featured({{ $request->id }})"
+                                            type="checkbox" id="flexSwitchCheckDefault"
+                                            {{ $request->featured == 1 ? 'checked' : '' }}>
+                                    </div><br>
+                                    <div class="form-check form-switch">
+                                        <label class="form-check-label" for="flexSwitchCheckDefault">Popular</label>
+                                        <input class="form-check-input" wire:click="popular({{ $request->id }})"
+                                            type="checkbox" id="flexSwitchCheckDefault"
+                                            {{ $request->popular == 1 ? 'checked' : '' }}>
+                                    </div>
                                 </td>
                                 <td class="text-end">
                                     <a href="{{ route('product.edit', $request->id) }}" class="badge p-1">

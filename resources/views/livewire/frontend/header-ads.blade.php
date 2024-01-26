@@ -13,10 +13,12 @@
                                             <h2 class="animated fw-900">{{ $banner->banner_title }}</h2>
                                             <h1 class="animated fw-900 text-brand">On All Products</h1>
                                             <p class="animated">{{ $banner->banner_description }}</p>
-                                            <a class="animated btn btn-brush btn-brush-3" href="shop-product-right.html"> Shop Now </a>
+                                            <a class="animated btn btn-brush btn-brush-3"
+                                                href="shop-product-right.html"> Shop Now </a>
                                         </div>
                                         <div class="slider-img">
-                                            <img src="{{ asset('files/banner/'.$banner->banner_image) }}" alt="">
+                                            <img src="{{ asset('files/banner/' . $banner->banner_image) }}"
+                                                alt="">
                                         </div>
                                     </div>
                                 </div>
@@ -27,22 +29,29 @@
                 </div>
             </div>
             <div class="col-lg-3 d-md-none d-lg-block">
-                <div class="banner-img banner-1 wow fadeIn  animated home-3">
-                    <img class="border-radius-10" src="{{ asset('files/campaign/'.$header_one->campaign_image) }}" alt="">
-                    <div class="banner-text">
-                        <span>{{ $header_one->campaign_for }}</span>
-                        <h4>{{  $header_one->campaign_name  }}</h4>
-                        <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                @if ($header_one)
+                    <div class="banner-img banner-1 wow fadeIn  animated home-3">
+                        <img class="border-radius-10" src="{{ asset('files/campaign/' . $header_one->campaign_image) }}"
+                            alt="">
+                        <div class="banner-text">
+                            <span>{{ $header_one->campaign_for }}</span>
+                            <h4>{{ $header_one->campaign_name }}</h4>
+                            <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="banner-img banner-2 wow fadeIn  animated mb-0">
-                    <img class="border-radius-10" src="{{  asset('files/campaign/'.$header_two->campaign_image)  }}" alt="">
-                    <div class="banner-text">
-                        <span>{{ $header_two->campaign_for }}</span>
-                        <h4>S{{  $header_two->campaign_name  }}</h4>
-                        <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                @endif
+
+                @if ($header_two)
+                    <div class="banner-img banner-2 wow fadeIn  animated mb-0">
+                        <img class="border-radius-10" src="{{ asset('files/campaign/' . $header_two->campaign_image) }}"
+                            alt="">
+                        <div class="banner-text">
+                            <span>{{ $header_two->campaign_for }}</span>
+                            <h4>S{{ $header_two->campaign_name }}</h4>
+                            <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>

@@ -426,4 +426,14 @@
         </div>
         <!--End tab-content-->
     </div>
+    @push('scripts')
+        <script>
+            document.addEventListener('livewire:load', function () {
+                Livewire.on('cookieSet', function () {
+                    // Handle the event, e.g., retrieve the updated cookie value
+                    console.log('Cookie set:', @json(request()->cookie('product_id')));
+                });
+            });
+        </script>
+    @endpush
 </section>

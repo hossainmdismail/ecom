@@ -31,13 +31,13 @@ class BannerController extends Controller
         $request->validate([
             'banner_title' => 'required|unique:banners|max:255',
         ]);
-        Photo::upload($request->banner_image, 'files/banner', $request->banner_title,[966,542]);
+        Photo::upload($request->banner_image, 'files/banner', $request->banner_title, [966, 542]);
         Banner::insert([
-            'banner_category' =>$request->banner_category,
-            'banner_title' =>$request->banner_title,
-            'banner_image' =>Photo::$name,
-            'banner_description' =>$request->banner_description,
-            'created_at'=>Carbon::now(),
+            'banner_category' => $request->banner_category,
+            'banner_title' => $request->banner_title,
+            'banner_image' => Photo::$name,
+            'banner_description' => $request->banner_description,
+            'created_at' => Carbon::now(),
         ]);
         return back()->with('succ', 'Banner added...');
     }
@@ -64,16 +64,16 @@ class BannerController extends Controller
         $banner = Banner::find($id);
 
         if ($request->banner_image != null) {
-            Photo::delete('files/banner',$banner->banner_image);
-            Photo::upload($request->banner_image, 'files/banner', $request->banner_title,[966,542]);
+            Photo::delete('files/banner', $banner->banner_image);
+            Photo::upload($request->banner_image, 'files/banner', $request->banner_title, [966, 542]);
         }
 
         Banner::where('id', $id)->update([
-            'banner_category' =>$request->banner_category,
-            'banner_title' =>$request->banner_title,
-            'banner_image' =>$request->banner_image != null? Photo::$name:null,
-            'banner_description' =>$request->banner_description,
-            'updated_at'=>Carbon::now(),
+            'banner_category' => $request->banner_category,
+            'banner_title' => $request->banner_title,
+            'banner_image' => $request->banner_image != null ? Photo::$name : null,
+            'banner_description' => $request->banner_description,
+            'updated_at' => Carbon::now(),
         ]);
         return redirect()->route('banner.index')->with('succ', 'Banner added...');
     }

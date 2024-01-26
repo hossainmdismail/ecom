@@ -156,6 +156,19 @@
                                 </div>
 
                                 <hr>
+                                <div class="mb-4">
+                                    <div class="form-check form-switch">
+                                        <label class="form-check-label" for="checkFeatured">Feature</label>
+                                        <input class="form-check-input" name="featured" type="checkbox"
+                                            id="checkFeatured">
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <label class="form-check-label" for="checkPopular">Popular</label>
+                                        <input class="form-check-input" name="popular" type="checkbox"
+                                            id="checkPopular">
+                                    </div>
+                                </div>
+                                <hr>
 
                                 <div class="col-12">
                                     <div class="mb-4">

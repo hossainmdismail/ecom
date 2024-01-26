@@ -11,8 +11,29 @@ class ProductList extends Component
 {
     use WithPagination;
 
-    public $search = '';
+    public $search;
 
+    public function featured($id)
+    {
+        $product = Product::find($id);
+        if ($product->featured == 1) {
+            $product->featured = 0;
+        } else {
+            $product->featured = 1;
+        }
+        $product->save();
+    }
+
+    public function popular($id)
+    {
+        $product = Product::find($id);
+        if ($product->popular == 1) {
+            $product->popular = 0;
+        } else {
+            $product->popular = 1;
+        }
+        $product->save();
+    }
 
     public function render()
     {
