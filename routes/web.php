@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\VariationController;
 use App\Http\Controllers\Admin\VariationOptionController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController as ControllersProductController;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +24,7 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
+Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 
 
 
@@ -32,6 +35,7 @@ Route::get('/create/admin', [AdminController::class, 'create_admin'])->name('cre
 Route::post('/create/role/admin', [AdminController::class, 'create_role_admin'])->name('create.role.admin');
 Route::resource('/category', CategoryController::class);
 Route::resource('/banner', BannerController::class);
+Route::resource('/config', ConfigController::class);
 Route::resource('/campaign', CampaignController::class);
 Route::resource('/variation', VariationController::class);
 Route::resource('/product', ProductController::class);

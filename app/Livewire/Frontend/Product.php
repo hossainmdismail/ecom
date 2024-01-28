@@ -14,8 +14,7 @@ class Product extends Component
         // CookieSD::removeFromCookie($productId);
         CookieSD::addToCookie($productId);
         // Emit an event to notify other components
-        $x = $this->emit('productAddedToCart');
-        dd($x);
+        $this->dispatch('post-created');
     }
 
 

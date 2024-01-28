@@ -52,13 +52,18 @@
                 </div>
             </li>
             <li class="menu-item has-submenu">
-                <a class="menu-link" href="page-form-product-1.html"> <i class="icon material-icons md-add_box"></i>
+                <a class="menu-link" href="#"> <i class="icon material-icons md-add_box"></i>
                     <span class="text">product</span>
                 </a>
                 <div class="submenu">
                     <a href="{{ route('product.index') }}">Product List</a>
                     <a href="{{ route('product.create') }}">Add product</a>
                 </div>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="{{ route('config.index') }}"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Configuration</span>
+                </a>
             </li>
         </ul>
         <br>

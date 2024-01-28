@@ -7,7 +7,6 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Photo;
-use Illuminate\Support\Facades\Cookie;
 
 class AdminController extends Controller
 {
@@ -18,9 +17,6 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        $value = Cookie::get('product_ids');
-        dd($value);
-
         return view('backend.home.home');
     }
     function admin_login()

@@ -241,13 +241,8 @@
                                     <span class="pro-count blue">4</span>
                                 </a>
                             </div>
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="shop-cart.html">
-                                    <img alt="Evara" src="{{ asset('frontend') }}/imgs/theme/icons/icon-cart.svg">
-                                    <span class="pro-count blue">2</span>
-                                </a>
-                                @livewire('frontend.shopping-cart')
-                            </div>
+
+                            @livewire('frontend.shopping-cart')
                         </div>
                     </div>
                 </div>

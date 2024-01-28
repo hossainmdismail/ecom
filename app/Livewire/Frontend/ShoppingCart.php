@@ -3,35 +3,35 @@
 namespace App\Livewire\Frontend;
 
 use App\Helpers\CookieSD;
-use App\Models\Product;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ShoppingCart extends Component
 {
-
-    protected $listeners = ['productAddedToCart' => 'loadCart'];
-
-    public $products = [];
-
-    public function mount()
+    #[On('post-created')]
+    public function updatePostList()
     {
-        $this->loadCart(); // Load cart data on initial render
     }
 
-    private function loadCart()
+
+    public function remove($id)
     {
-        // $cookieData = CookieSD::getProductIds();
-        // $this->products = Product::where('stock_status', 1)->get()->take(2);
-
-        $cookieData = CookieSD::getProductIds();
-
-        $this->products = Product::whereIn('id', $cookieData)
-            ->where('stock_status', 1)
-            ->get();
+        CookieSD::removeFromCookie($id);
+        $this->dispatch('post-created');
+        // dd(CookieSD::getProductIds());
     }
+
 
     public function render()
     {
-        return view('livewire..frontend.shopping-cart');
+
+        // dd(CookieSD::data()['products']);
+
+        // $total_price = count($products)
+        return view('livewire..frontend.shopping-cart', [
+            'products'  => CookieSD::data()['products'],
+            'price'     => CookieSD::data()['price'],
+            'total'     => CookieSD::data()['total'],
+        ]);
     }
 }
