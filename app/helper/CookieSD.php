@@ -21,13 +21,6 @@ class CookieSD
         return $productData;
     }
 
-    /**
-     * Adds a product ID and quantity to the cookie.
-     *
-     * @param int $productId
-     * @param int $quantity
-     * @return void
-     */
     public static function addToCookie(int $productId, int $quantity): void
     {
         $productData = self::getProductData();
@@ -37,51 +30,70 @@ class CookieSD
 
         if ($existingProductIndex !== false) {
             // If the product already exists, update its quantity
-            $productData[$existingProductIndex]['quantity'] += $quantity;
+            $productData[$existingProductIndex]['quantity'] += max(1, $quantity); // Ensure the quantity is at least 1
         } else {
             // If the product does not exist, add it to the array
-            $productData[] = ['id' => $productId, 'quantity' => $quantity];
+            $productData[] = ['id' => $productId, 'quantity' => max(1, $quantity)];
         }
 
-        $encodedProductData = json_encode($productData);
+        $encodedProductData = json_encode(array_values($productData)); // Reset array keys
         Cookie::queue(Cookie::forever('product_data', $encodedProductData));
     }
 
 
-    /**
-     * Removes a product ID from the cookie.
-     *
-     * @param int $productId
-     * @return void
-     */
+
+
     public static function removeFromCookie(int $productId): void
     {
-        $productIds = self::getProductData();
-        $updatedProductIds = array_filter($productIds, function ($id) use ($productId) {
-            return $id !== $productId;
+        $productData = self::getProductData();
+
+        // Filter out the product with the specified ID
+        $updatedProductData = array_filter($productData, function ($item) use ($productId) {
+            return $item['id'] !== $productId;
         });
-        $encodedProductIds = json_encode($updatedProductIds);
-        Cookie::queue(Cookie::forever('product_ids', $encodedProductIds));
+
+        // Update the cookie with the modified product data
+        $encodedProductData = json_encode($updatedProductData);
+        Cookie::queue(Cookie::forever('product_data', $encodedProductData));
     }
+
 
     public static function data()
     {
         $cookie = self::getProductData();
 
         if (!empty($cookie)) {
-            $data = Product::query();
+            $productIds = array_column($cookie, 'id'); // Extract product IDs from the $cookie array
 
-            $products = $data->whereIn('id', $cookie)
-                ->where('stock_status', 1)
-                ->get();
+            // Check if there are valid product IDs in the cookie
+            if (!empty($productIds)) {
+                $data = Product::query();
 
-            $totalPrice = $products->sum('finalPrice');
+                $products = $data->whereIn('id', $productIds)
+                    ->where('stock_status', 1)
+                    ->get();
 
-            return [
-                'products' => $products,
-                'price'    => $totalPrice,
-                'total'    => $products->count(),
-            ];
+                // Combine product data with quantities
+                $productsWithData = collect($cookie)->map(function ($cookieItem) use ($products) {
+                    $product = $products->where('id', $cookieItem['id'])->first();
+                    $quantity = max(1, $cookieItem['quantity']);
+
+                    if ($product) {
+                        $product->quantity = $quantity;
+                        return $product;
+                    }
+
+                    return null; // Handle the case where the product is not found
+                })->filter();
+
+                $totalPrice = $productsWithData->sum('finalPrice');
+
+                return [
+                    'products' => $productsWithData,
+                    'price'    => $totalPrice,
+                    'total'    => $productsWithData->count(),
+                ];
+            }
         }
 
         return [
@@ -91,13 +103,8 @@ class CookieSD
         ];
     }
 
-    /**
-     * Reduces the quantity of a product in the cookie.
-     *
-     * @param int $productId
-     * @param int $quantity
-     * @return void
-     */
+
+
     public static function reduceQuantityInCookie(int $productId, int $quantity): void
     {
         $productData = self::getProductData();
@@ -107,7 +114,7 @@ class CookieSD
 
         if ($existingProductIndex !== false) {
             // If the product exists, reduce its quantity
-            $productData[$existingProductIndex]['quantity'] -= $quantity;
+            $productData[$existingProductIndex]['quantity'] = max(1, $productData[$existingProductIndex]['quantity'] - $quantity);
 
             // If the quantity becomes zero or negative, remove the product from the array
             if ($productData[$existingProductIndex]['quantity'] <= 0) {

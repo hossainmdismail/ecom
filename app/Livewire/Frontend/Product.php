@@ -12,7 +12,7 @@ class Product extends Component
     public function addToCart($productId)
     {
         // CookieSD::removeFromCookie($productId);
-        CookieSD::addToCookie($productId);
+        CookieSD::addToCookie($productId, 4);
         // Emit an event to notify other components
         $this->dispatch('post-created');
     }

@@ -161,6 +161,7 @@
 
 
 <header class="header-area header-style-1 header-height-2">
+    {{-- Top Header --}}
     <div class="header-top header-top-ptb-1 d-none d-lg-block">
         <div class="container">
             <div class="row align-items-center">
@@ -200,55 +201,16 @@
                                                 alt="">Pусский</a></li>
                                 </ul>
                             </li>
-                            <li><i class="fi-rs-user"></i><a href="page-login-register.html">Log In / Sign Up</a></li>
+                            {{-- <li><i class="fi-rs-user"></i><a href="page-login-register.html">Log In / Sign Up</a></li> --}}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
-        <div class="container">
-            <div class="header-wrap">
-                <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ asset('frontend') }}/imgs/theme/logo3.png" alt="logo"></a>
-                </div>
-                <div class="header-right">
-                    <div class="search-style-2">
-                        <form action="#">
-                            <select class="select-active">
-                                <option>All Categories</option>
-                                <option>Women's</option>
-                                <option>Men's</option>
-                                <option>Cellphones</option>
-                                <option>Computer</option>
-                                <option>Electronics</option>
-                                <option> Accessories</option>
-                                <option>Home & Garden</option>
-                                <option>Luggage</option>
-                                <option>Shoes</option>
-                                <option>Mother & Kids</option>
-                            </select>
-                            <input type="text" placeholder="Search for items...">
-                        </form>
-                    </div>
-                    <div class="header-action-right">
-                        <div class="header-action-2">
-                            <div class="header-action-icon-2">
-                                <a href="shop-wishlist.html">
-                                    <img class="svgInject" alt="Evara"
-                                        src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg">
-                                    <span class="pro-count blue">4</span>
-                                </a>
-                            </div>
 
-                            @livewire('frontend.shopping-cart')
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+    {{-- Header Bottom --}}
     <div class="header-bottom header-bottom-bg-color sticky-bar">
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
@@ -257,9 +219,9 @@
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
-                        <a class="categori-button-active" href="#">
-                            <span class="fi-rs-apps"></span> Browse Categories
-                        </a>
+                        <div class="logo logo-width-1">
+                            <a href="{{route('index')}}"><img src="{{ asset('frontend') }}/imgs/theme/logo3.png" alt="logo"></a>
+                        </div>
                         <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>
                                 <li class="has-children">
@@ -629,64 +591,27 @@
                         </nav>
                     </div>
                 </div>
-                <div class="hotline d-none d-lg-block">
-                    <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888 </p>
+                <div class="header-action-right d-none d-lg-block">
+                    <div class="header-action-2">
+                        {{-- <div class="header-action-icon-2">
+                            <a href="shop-wishlist.html">
+                                <img class="svgInject" alt="Evara"
+                                    src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg">
+                                <span class="pro-count blue">4</span>
+                            </a>
+                        </div> --}}
+
+                        @livewire('frontend.shopping-cart')
+                    </div>
                 </div>
-                <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
+                {{-- <div class="hotline d-none d-lg-block">
+                    <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888 </p>
+                </div> --}}
+                {{-- <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p> --}}
                 <div class="header-action-right d-block d-lg-none">
                     <div class="header-action-2">
-                        <div class="header-action-icon-2">
-                            <a href="shop-wishlist.html">
-                                <img alt="Evara" src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg">
-                                <span class="pro-count white">4</span>
-                            </a>
-                        </div>
                         {{-- shpping cart --}}
-                        <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="shop-cart.html">
-                                <img alt="Evara" src="{{ asset('frontend') }}/imgs/theme/icons/icon-cart.svg">
-                                <span class="pro-count white">2</span>
-                            </a>
-                            <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                <ul>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Evara"
-                                                    src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">Plain Striola Shirts</a></h4>
-                                            <h3><span>1 × </span>$800.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="shopping-cart-img">
-                                            <a href="shop-product-right.html"><img alt="Evara"
-                                                    src="{{ asset('frontend') }}/imgs/shop/thumbnail-4.jpg"></a>
-                                        </div>
-                                        <div class="shopping-cart-title">
-                                            <h4><a href="shop-product-right.html">Macbook Pro 2022</a></h4>
-                                            <h3><span>1 × </span>$3500.00</h3>
-                                        </div>
-                                        <div class="shopping-cart-delete">
-                                            <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                                <div class="shopping-cart-footer">
-                                    <div class="shopping-cart-total">
-                                        <h4>Total <span>$383.00</span></h4>
-                                    </div>
-                                    <div class="shopping-cart-button">
-                                        <a href="shop-cart.html">View cart</a>
-                                        <a href="shop-checkout.html">Checkout</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @livewire('frontend.shopping-cart')
                         <div class="header-action-icon-2 d-block d-lg-none">
                             <div class="burger-icon burger-icon-white">
                                 <span class="burger-icon-top"></span>
@@ -700,6 +625,8 @@
         </div>
     </div>
 </header>
+
+
 <div class="mobile-header-active mobile-header-wrapper-style">
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
