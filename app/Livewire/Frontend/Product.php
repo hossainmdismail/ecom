@@ -9,10 +9,13 @@ use Livewire\Component;
 
 class Product extends Component
 {
-    public function addToCart($productId)
+    public function addToCart($productId,$qnt = null)
     {
-        // CookieSD::removeFromCookie($productId);
-        CookieSD::addToCookie($productId, 4);
+        if (ModelsProduct::find($productId)->stock_status == 0) {
+            return back();
+        }
+        $quantity = $qnt?$qnt:1;
+        CookieSD::addToCookie($productId, $quantity);
         // Emit an event to notify other components
         $this->dispatch('post-created');
     }

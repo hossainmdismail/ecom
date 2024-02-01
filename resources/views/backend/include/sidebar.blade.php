@@ -61,6 +61,11 @@
                 </div>
             </li>
             <li class="menu-item">
+                <a class="menu-link" href="{{ route('shipping.index') }}"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Shipping</span>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a class="menu-link" href="{{ route('config.index') }}"> <i class="icon material-icons md-add_box"></i>
                     <span class="text">Configuration</span>
                 </a>

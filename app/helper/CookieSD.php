@@ -80,13 +80,14 @@ class CookieSD
 
                     if ($product) {
                         $product->quantity = $quantity;
+                        $product->totalPrice = $product->finalPrice * $quantity; // Calculate total price for each product
                         return $product;
                     }
 
                     return null; // Handle the case where the product is not found
                 })->filter();
 
-                $totalPrice = $productsWithData->sum('finalPrice');
+                $totalPrice = $productsWithData->sum('totalPrice');
 
                 return [
                     'products' => $productsWithData,
@@ -105,7 +106,7 @@ class CookieSD
 
 
 
-    public static function reduceQuantityInCookie(int $productId, int $quantity): void
+    public static function decrement(int $productId): void
     {
         $productData = self::getProductData();
 
@@ -114,7 +115,29 @@ class CookieSD
 
         if ($existingProductIndex !== false) {
             // If the product exists, reduce its quantity
-            $productData[$existingProductIndex]['quantity'] = max(1, $productData[$existingProductIndex]['quantity'] - $quantity);
+            $productData[$existingProductIndex]['quantity'] = max(1, $productData[$existingProductIndex]['quantity'] -1);
+
+            // If the quantity becomes zero or negative, remove the product from the array
+            if ($productData[$existingProductIndex]['quantity'] <= 0) {
+                unset($productData[$existingProductIndex]);
+            }
+
+            // Update the cookie with the modified product data
+            $encodedProductData = json_encode($productData);
+            Cookie::queue(Cookie::forever('product_data', $encodedProductData));
+        }
+    }
+
+    public static function increment(int $productId): void
+    {
+        $productData = self::getProductData();
+
+        // Find the index of the product in the array
+        $existingProductIndex = array_search($productId, array_column($productData, 'id'));
+
+        if ($existingProductIndex !== false) {
+            // If the product exists, reduce its quantity
+            $productData[$existingProductIndex]['quantity'] = max(1, $productData[$existingProductIndex]['quantity'] +1);
 
             // If the quantity becomes zero or negative, remove the product from the array
             if ($productData[$existingProductIndex]['quantity'] <= 0) {
