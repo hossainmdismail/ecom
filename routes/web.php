@@ -27,6 +27,7 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
+Route::post('/add/cart', [ControllersProductController::class, 'cart'])->name('addtocart');
 Route::get('/categories/{slugs}', [ControllersCategoryController::class, 'index'])->name('front.category');
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
 Route::get('/shop', [ShopController::class, 'shop'])->name('shop');

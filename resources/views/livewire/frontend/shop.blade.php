@@ -112,7 +112,7 @@
                                         </div> --}}
                                     </div>
                                     <div class="product-content-wrap">
-                                        <a wire:click="addToCart({{ $product->id }})" class="btn btn-sm btn-primary" style="width: 100%"> Order now </a>
+                                        <a href="{{ route('product.view', $product->slugs) }}" class="btn btn-sm btn-primary" style="width: 100%"> Order now </a>
                                     </div>
                                 </div>
                             </div>

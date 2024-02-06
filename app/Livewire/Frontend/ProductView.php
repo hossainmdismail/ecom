@@ -10,11 +10,11 @@ class ProductView extends Component
 {
     public $slugs;
 
-    public $qnt = 1;
+    public $qnts = 1;
 
     public function addToCart($productId,$qnt = null)
     {
-        dd($qnt);
+        // dd($this->qnts);
         if (Product::find($productId)->stock_status == 0) {
             return back();
         }
@@ -23,6 +23,16 @@ class ProductView extends Component
         CookieSD::addToCookie($productId, $quantity);
         // Emit an event to notify other components
         $this->dispatch('post-created');
+    }
+
+    public function incrementQuantity()
+    {
+        $this->qnts++;
+    }
+
+    public function decrementQuantity()
+    {
+        $this->qnts--;
     }
 
     public function orderNow($productId,$qnt = null){

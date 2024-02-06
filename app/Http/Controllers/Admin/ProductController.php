@@ -88,10 +88,10 @@ class ProductController extends Controller
             }
 
             foreach ($request->images as  $image) {
-                Photo::upload($image, 'files/product',  $product_id . 'PRO', [440, 440]);
+                Photo::upload($image, 'files/product',  $product_id . 'PRO', [1100, 1100]);
                 ProductPhoto::insert([
-                    'product_id' => $product_id,
-                    'image'      => Photo::$name,
+                    'product_id'    => $product_id,
+                    'image'         => Photo::$name,
                 ]);
             }
         }
