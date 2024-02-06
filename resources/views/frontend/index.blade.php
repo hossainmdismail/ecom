@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Modal -->
-<div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
+{{-- <div class="modal fade custom-modal" id="onloadModal" tabindex="-1" aria-labelledby="onloadModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -37,7 +37,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <main class="main">
     @livewire('frontend.header-ads')
     <section class="featured section-padding">
@@ -57,7 +57,7 @@
                     <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                         <div  class="banner-features wow fadeIn animated hover-up animated">
                             <img src="{{ asset('files/category/'.$category->category_image) }}" alt="">
-                            <a href="#" class="bg-{{ $key+1 }} p-2 rounded" style="font-weight: 600;">{{ $category->category_name }}</a>
+                            <a href="{{ route('front.category',$category->slugs) }}" class="bg-{{ $key+1 }} p-2 rounded" style="font-weight: 600;">{{ $category->category_name }}</a>
                         </div>
                     </div>
                 @empty

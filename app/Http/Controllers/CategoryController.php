@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    function index(){
-        return view('frontend.category');
+    function index($slugs){
+        return view('frontend.category',['slugs' => $slugs]);
     }
 }

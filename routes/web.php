@@ -14,6 +14,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\ProductController as ControllersProductController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,8 +27,9 @@ Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/products/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
-Route::get('/category/{slugs}', [ControllersCategoryController::class, 'index'])->name('front.category');
+Route::get('/categories/{slugs}', [ControllersCategoryController::class, 'index'])->name('front.category');
 Route::get('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::get('/shop', [ShopController::class, 'shop'])->name('shop');
 
 
 
