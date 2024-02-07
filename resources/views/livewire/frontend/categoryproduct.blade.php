@@ -64,7 +64,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="shop-product-right.html">
+                                            <a href="{{ route('product.view', $product->slugs) }}">
                                                 @if ($product->images)
                                                     @foreach ($product->images->take(2) as $key => $image)
                                                         <img class="{{ $key + 1 == 1 ? 'default-img' : 'hover-img' }}"
@@ -75,12 +75,6 @@
                                                 <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
                                                 <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                             </a>
-                                        </div>
-                                        <div class="product-action-1">
-                                            <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                                <i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         @if ($product->featured == 1)
                                             <div class="product-badges product-badges-position product-badges-mrg">

@@ -20,6 +20,6 @@ class AdminMiddleware
         if (Auth::guard('admin')->check()) {
             return $next($request);
         }
-        return redirect()->route('admin.login')->with('err', 'You are not admin');
+        return redirect()->route('index')->with('err', 'You are not admin');
     }
 }

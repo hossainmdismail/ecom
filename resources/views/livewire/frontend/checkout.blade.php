@@ -49,19 +49,9 @@
                                         <td class="action" data-title="Remove"><a wire:click="remove({{$product->id}})" class="text-muted"><i class="fi-rs-trash"></i></a></td>
                                     </tr>
                                 @endforeach
-                                {{-- <tr>
-                                    <td colspan="6" class="text-end">
-                                        <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
-                                    </td>
-                                </tr> --}}
                             </tbody>
                         </table>
                     </div>
-                    {{-- <div class="cart-action text-end">
-                        <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                        <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
-                    </div> --}}
-                    {{-- Finger Logo --}}
                     <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                     <form wire:submit="save">
                         <div class="row mb-50">
@@ -72,11 +62,11 @@
                                     </div>
                                     @foreach ($shippings as $key => $shipping)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" wire:click="ship({{ $shipping->id }})" id="{{ $key+1 }}">
-                                            <label class="form-check-label" for="{{ $key+1 }}">
-                                            {{ $shipping->name }} <sup>৳{{ $shipping->price }}</sup>
+                                            <input class="form-check-input" wire:click="ship({{ $shipping->id }})" type="radio" model id="flexRadioDefault{{ $key+1 }}" >
+                                            <label class="form-check-label" for="flexRadioDefault{{ $key+1 }}">
+                                                {{ $shipping->name }} <span style="color: black;font-size: 12px; padding-left: 4px; font-weight: 900;">{{ $shipping->price }}</span>
                                             </label>
-                                        </div>
+                                          </div>
                                     @endforeach
                                 </div>
                                 <div class="input-group mb-3">
@@ -88,7 +78,7 @@
                                 </div>
 
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control input-sm @error('address') is-invalid @enderror" wire:model="address" aria-label="lg" placeholder="Address">
+                                    <input type="text" class="form-control input-sm @error('address') is-invalid @enderror" wire:model="address" aria-label="lg" placeholder="Address">
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-12">

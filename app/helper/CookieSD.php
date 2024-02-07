@@ -18,7 +18,7 @@ class CookieSD
             return is_array($item) && isset($item['id']) && isset($item['quantity']) && is_numeric($item['id']) && is_numeric($item['quantity']);
         });
 
-        return $productData;
+        return array_values($productData); // Reset array keys
     }
 
     public static function addToCookie(int $productId, int $quantity): void
@@ -40,9 +40,6 @@ class CookieSD
         Cookie::queue(Cookie::forever('product_data', $encodedProductData));
     }
 
-
-
-
     public static function removeFromCookie(int $productId): void
     {
         $productData = self::getProductData();
@@ -53,7 +50,7 @@ class CookieSD
         });
 
         // Update the cookie with the modified product data
-        $encodedProductData = json_encode($updatedProductData);
+        $encodedProductData = json_encode(array_values($updatedProductData)); // Reset array keys
         Cookie::queue(Cookie::forever('product_data', $encodedProductData));
     }
 
@@ -103,8 +100,6 @@ class CookieSD
             'total'    => 0,
         ];
     }
-
-
 
     public static function decrement(int $productId): void
     {

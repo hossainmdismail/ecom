@@ -80,6 +80,7 @@
                                             {{-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a> --}}
                                         </div>
                                     </form>
+                                    <a href="tel:+8801888477155" class="btn btn-sm">Call Us : 01888477155</a>
                                     <ul class="product-meta font-xs color-grey mt-50">
                                         <li>Availability:<span class="in-stock text-{{ $product->stock_status == 1 ? 'success':'danger' }} ml-5">{{ $product->stock_status == 1 ? 'Available':'Stock Out' }}</span></li>
                                     </ul>
@@ -102,7 +103,7 @@
                             <div class="tab-content shop_info_tab entry-main-content">
                                 <div class="tab-pane fade show active" id="Description">
                                     <div class="">
-                                        {{ $product->description }}
+                                        {!! $product->description !!}
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="Additional-info">
@@ -337,17 +338,15 @@
                                                         {{-- <img class="" src="assets/imgs/shop/product-2-2.jpg" alt=""> --}}
                                                     </a>
                                                 </div>
-                                                <div class="product-action-1">
-                                                    <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal"
-                                                        data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                                    <a aria-label="Add To Wishlist" class="action-btn hover-up"
-                                                        href="shop-wishlist.html"><i class="fi-rs-heart"></i></a>
-                                                    <a aria-label="Compare" class="action-btn hover-up"
-                                                        href="shop-compare.html"><i class="fi-rs-shuffle"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    <span class="new">Popular</span>
-                                                </div>
+                                                @if ($pupolar->featured == 1)
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="best">Featured</span>
+                                                    </div>
+                                                @elseif ($pupolar->popular == 1)
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        <span class="new">Popular</span>
+                                                    </div>
+                                                @endif
                                             </div>
                                             <div class="product-content-wrap">
                                                 <div class="product-category">
@@ -374,13 +373,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
-                            <img class="border-radius-10" src="assets/imgs/banner/banner-4.png" alt="">
-                            <div class="banner-text">
-                                <h4 class="mb-15 mt-40">Repair Services</h4>
-                                <h2 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h2>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 {{-- <div class="col-lg-3 primary-sidebar sticky-sidebar">

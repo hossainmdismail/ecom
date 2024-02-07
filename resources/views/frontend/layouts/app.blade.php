@@ -1,8 +1,11 @@
+<?php
+use App\Models\Config;
+
+$config = Config::first();
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-
-
-<!-- Mirrored from wp.alithemes.com/html/evara/evara-frontend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Jul 2023 14:36:59 GMT -->
 <head>
     <meta charset="utf-8">
     <title>Evara - eCommerce HTML Template</title>
@@ -14,7 +17,10 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend') }}/imgs/theme/favicon.svg">
+    @if ($config)
+        <link rel="shortcut icon" href="{{ asset('files/config/'.$config->logo) }}" type="image/x-icon">
+    @endif
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend') }}/imgs/theme/favicon.svg"> --}}
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/maind134.css?v=3.4">
     @livewireStyles

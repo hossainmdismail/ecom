@@ -1,9 +1,13 @@
+@extends('frontend.layouts.app')
+
+@section('content')
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('index') }}" rel="nofollow">Home</a>
-                <span></span> Shop
+                <span></span> Featured
+                {{-- <span></span> {{ $slugs }} --}}
             </div>
         </div>
     </div>
@@ -14,9 +18,10 @@
                     <div class="shop-product-fillter">
                         <div class="totall-product">
                             <p> We found <strong class="text-brand"> <span wire:loading.remove>{{ $products->count() }}</span> <span wire:loading class="spinner-border spinner-border-sm text-secondary" role="status"></span></strong> items for you!</p>
+
                         </div>
                         <div class="sort-by-product-area">
-                            <div class="sort-by-cover mr-10">
+                            {{-- <div class="sort-by-cover mr-10">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
                                         <span><i class="fi-rs-apps"></i>Show:</span>
@@ -33,7 +38,7 @@
                                         <li><a wire:click="pageFilter({{ 100 }})">100</a></li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- <div class="sort-by-cover">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
@@ -70,6 +75,8 @@
                                                             alt="">
                                                     @endforeach
                                                 @endif
+                                                <img class="default-img" src="assets/imgs/shop/product-2-1.jpg" alt="">
+                                                <img class="hover-img" src="assets/imgs/shop/product-2-2.jpg" alt="">
                                             </a>
                                         </div>
                                         @if ($product->featured == 1)
@@ -114,7 +121,7 @@
                     <!--pagination-->
                     <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
                         <nav aria-label="Page navigation example">
-                            {{ $products->links('livewire::bootstrap') }}
+                            {{ $products->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
 
@@ -199,16 +206,18 @@
                             No Data Found
                         @endforelse
                     </div>
-                    <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
+
+                    {{-- <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
                         <img src="{{ asset('files/campaign/'.$horizontal->campaign_image) }}" alt="">
                         <div class="banner-text">
                             <span>{{ $horizontal->campaign_for }}</span>
                             <h4>{{ $horizontal->campaign_name }}</h4>
                             <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
     </section>
 </main>
+@endsection

@@ -47,7 +47,12 @@ class AdminController extends Controller
     function admin_register()
     {
         $super_admin = Admin::count();
-        return view('backend.include.admin_register', compact('super_admin'));
+
+        if ($super_admin == 0 && !Auth::guard('admin')->check()) {
+            return view('backend.include.admin_register', compact('super_admin'));
+        }else {
+            return redirect('/');
+        }
     }
     //Admin Store
     function admin_store(Request $request)
@@ -97,5 +102,15 @@ class AdminController extends Controller
             'password' => bcrypt($request->password),
         ]);
         return back();
+    }
+
+    function admin_logout(Request $request){
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

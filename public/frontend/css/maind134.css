@@ -10064,6 +10064,9 @@ span.fi-rs-apps {
     .product-list .product-cart-wrap .product-img-action-wrap {
         max-width: 100%;
     }
+    .product-cart-wrap .product-img-action-wrap {
+        padding: 5px 5px;
+    }
 
     .shop-product-fillter {
         display: block;

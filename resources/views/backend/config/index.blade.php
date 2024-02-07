@@ -86,6 +86,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if ($request)
                         <tr>
                             <td><b>{{ $request->name }}</b></td>
                             <td><b>{{ $request->email }}</b></td>
@@ -95,6 +96,7 @@
                                 <img style="width: 50px;" src="{{ asset('files/config/'. $request->logo) }}" alt="">
                             </td>
                         </tr>
+                        @endif
                     </tbody>
                 </table>
             </div> <!-- table-responsive //end -->

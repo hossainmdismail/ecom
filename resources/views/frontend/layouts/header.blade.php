@@ -217,12 +217,17 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ asset('frontend') }}/imgs/theme/logo.svg" alt="logo"></a>
+                    @if ($config)
+                        {{-- <link rel="shortcut icon" href="" type="image/x-icon"> --}}
+                        <a href="index.html"><img src="{{ asset('files/config/'.$config->logo) }}" alt="logo"></a>
+                    @endif
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
                         <div class="logo logo-width-1">
-                            <a href="{{route('index')}}"><img src="{{ asset('frontend') }}/imgs/theme/logo3.png" alt="logo"></a>
+                            @if ($config)
+                                <a href="{{route('index')}}"><img src="{{ asset('files/config/'.$config->logo) }}" alt="logo"></a>
+                            @endif
                         </div>
                         {{-- <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>

@@ -5,14 +5,14 @@
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <h3>Hot Deal</h3>
             </ul>
-            <a href="{{ route('shop') }}" class="view-more d-none d-md-flex">View More<i
+            <a href="{{ route('features') }}" class="view-more d-none d-md-flex">View More<i
                     class="fi-rs-angle-double-small-right"></i></a>
         </div>
         <div class="tab-content wow fadeIn animated" id="myTabContent">
             <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                 <div class="row product-grid-4">
                     @foreach ($featureds as $featured)
-                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-6 col-sm-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -59,7 +59,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="product-content-wrap">
+                                <div class="product-content-wrap d-lg-block d-none">
                                     <a href="{{ route('product.view', $featured->slugs) }}" class="btn btn-sm btn-primary" style="width: 100%"> Order now </a>
                                 </div>
                             </div>
@@ -78,13 +78,13 @@
                 <h3>Best Sale!</h3>
             </ul>
             {{-- Need link category base url --}}
-            <a href="{{ route('shop') }}" class="view-more d-none d-md-flex">View More<i
+            <a href="{{ route('hot') }}" class="view-more d-none d-md-flex">View More<i
                     class="fi-rs-angle-double-small-right"></i></a>
         </div>
         <div class="tab-content wow fadeIn animated" id="myTabContent">
             <div class="row product-grid-4">
                 @foreach ($populars as $pupolar)
-                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                    <div class="col-lg-3 col-md-4 col-6 col-sm-6">
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
@@ -131,7 +131,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="product-content-wrap">
+                            <div class="product-content-wrap d-lg-block d-none">
                                 <a href="{{ route('product.view', $pupolar->slugs) }}" class="btn btn-sm btn-primary" style="width: 100%"> Order now </a>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
         <div class="tab-content wow fadeIn animated" id="myTabContent">
             <div class="row product-grid-4">
                 @foreach ($latests as $latest)
-                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                    <div class="col-lg-3 col-md-4 col-6 col-sm-6">
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom">
@@ -200,7 +200,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="product-content-wrap">
+                            <div class="product-content-wrap d-lg-block d-none">
                                 <a href="{{ route('product.view', $latest->slugs) }}" class="btn btn-sm btn-primary" style="width: 100%"> Order now </a>
                             </div>
                         </div>

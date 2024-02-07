@@ -1,12 +1,13 @@
+<?php
+use App\Models\Config;
+
+$config = Config::first();
+?>
 <!DOCTYPE HTML>
 <html lang="en">
-
-
-<!-- Mirrored from wp.alithemes.com/html/evara/evara-backend/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 27 Jul 2023 14:53:45 GMT -->
-
 <head>
     <meta charset="utf-8">
-    <title>Evara Dashboard</title>
+    <title>Dashboard</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,9 +16,12 @@
     <meta property="og:url" content="">
     <meta property="og:image" content="">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend') }}/assets/imgs/theme/favicon.svg">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('backend') }}/assets/imgs/theme/favicon.svg"> --}}
     <!-- Template CSS -->
     <link href="{{ asset('backend') }}/assets/css/main.css" rel="stylesheet" type="text/css" />
+    @if ($config)
+        <link rel="shortcut icon" href="{{ asset('files/config/'.$config->logo) }}" type="image/x-icon">
+    @endif
 
     <script src="{{ asset('backend') }}/assets/js/vendors/jquery-3.6.0.min.js"></script>
     <script src="{{ asset('backend') }}/assets/js/vendors/bootstrap.bundle.min.js"></script>
