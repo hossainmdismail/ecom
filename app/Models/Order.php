@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'status',
+        'message',
+    ];
+
+    function products()
+    {
+        return $this->hasMany(OrderProduct::class, 'order_id');
+    }
+
+    function shipping()
+    {
+        return $this->belongsTo(Shipping::class, 'shipping_id');
+    }
 }

@@ -91,7 +91,7 @@ class Checkout extends Component
         $this->shippingPrice = 0;
         Cookie::queue(Cookie::forget('product_data'));
         $this->dispatch('post-created');
-        return back();
+        return redirect()->route('thankyou');
     }
 
     public function ship($id){

@@ -31,7 +31,7 @@ $config = Config::first();
     @livewireStyles
 </head>
 
-<body class="dark">
+<body class="light">
     <div class="screen-overlay"></div>
     @include('backend.include.sidebar')
     <main class="main-wrap">

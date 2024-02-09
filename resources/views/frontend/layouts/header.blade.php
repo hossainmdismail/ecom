@@ -189,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-xl-3 col-lg-4">
+                <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>
                             <li>
@@ -206,7 +206,7 @@
                             </li>
                         </ul>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>
@@ -219,7 +219,7 @@
                 <div class="logo logo-width-1 d-block d-lg-none">
                     @if ($config)
                         {{-- <link rel="shortcut icon" href="" type="image/x-icon"> --}}
-                        <a href="index.html"><img src="{{ asset('files/config/'.$config->logo) }}" alt="logo"></a>
+                        <a href="{{route('index')}}"><img src="{{ asset('files/config/'.$config->logo) }}" alt="logo"></a>
                     @endif
                 </div>
                 <div class="header-nav d-none d-lg-flex">

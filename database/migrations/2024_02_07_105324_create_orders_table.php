@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('address');
             $table->bigInteger('shipping_id');
             $table->decimal('price', 10, 2)->default(0.00);
+            $table->longText('message')->nullable();
             $table->enum('status',['pending','processing','shipping','return','cancel','damage','delieverd']);
             $table->timestamps();
         });

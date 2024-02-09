@@ -38,6 +38,7 @@ Route::get('/shop', [ShopController::class, 'shop'])->name('shop');
 Route::get('/features', [FeaturesController::class, 'features'])->name('features');
 Route::get('/hot-deal', [FeaturesController::class, 'hot'])->name('hot');
 Route::post('/order',[OrderController::class, 'order'])->name('user.order');
+Route::get('/thankyou',[OrderController::class, 'thankyou'])->name('thankyou');
 
 Route::middleware(['admin'])->prefix('sd_admin')->group(function () {
     //Admin
@@ -46,6 +47,9 @@ Route::middleware(['admin'])->prefix('sd_admin')->group(function () {
     Route::get('/create/admin', [AdminController::class, 'create_admin'])->name('create.admin');
     Route::post('/create/role/admin', [AdminController::class, 'create_role_admin'])->name('create.role.admin');
     Route::get('/order',[AdminOrder::class, 'order'])->name('admin.order');
+    Route::get('/order/view/{id}',[AdminOrder::class, 'orderView'])->name('admin.order.view');
+    Route::post('/order/view/modify',[AdminOrder::class, 'orderViewModify'])->name('admin.order.modify');
+    Route::post('/csv/download',[AdminOrder::class, 'csvDownload'])->name('csv.download');
     Route::resource('/category', CategoryController::class);
     Route::resource('/banner', BannerController::class);
     Route::resource('/config', ConfigController::class);

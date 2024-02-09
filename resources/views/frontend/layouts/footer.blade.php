@@ -1,5 +1,5 @@
 <footer class="main">
-    <section class="newsletter p-30 text-white wow fadeIn animated">
+    {{-- <section class="newsletter p-30 text-white wow fadeIn animated">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-md-3 mb-lg-0">
@@ -23,14 +23,17 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <section class="section-padding footer-mid">
         <div class="container pt-15 pb-20">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5 mb-lg-0">
                         <div class="logo logo-width-1 wow fadeIn animated">
-                            <a href="index.html"><img src="{{ asset('frontend') }}/imgs/theme/logo.svg" alt="logo"></a>
+                            @if ($config)
+                                {{-- <link rel="shortcut icon" href="" type="image/x-icon"> --}}
+                                <a href="{{ route('index') }}"><img src="{{ asset('files/config/'.$config->logo) }}" alt="logo"></a>
+                            @endif
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                         <p class="wow fadeIn animated">
@@ -99,11 +102,11 @@
                 <div class="footer-bottom"></div>
             </div>
             <div class="col-lg-6">
-                <p class="float-md-left font-sm text-muted mb-0">&copy; 2022, <strong class="text-brand">Evara</strong> - HTML Ecommerce Template </p>
+                <p class="float-md-left font-sm text-muted mb-0">&copy; 2024, <strong class="text-brand">Familly Bazar </strong>- All rights reserved</p>
             </div>
             <div class="col-lg-6">
                 <p class="text-lg-end text-start font-sm text-muted mb-0">
-                    Designed by <a href="http://alithemes.com/" target="_blank">Alithemes.com</a>. All rights reserved
+                    Developed by <a href="https://synexdigital.com/" target="_blank">Synex Digital</a>
                 </p>
             </div>
         </div>
