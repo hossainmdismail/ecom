@@ -486,12 +486,11 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <a href="{{ route('contact') }}">Contact</a>
                                 </li>
                                 <li>
-                                    <a href="#">About</a>
+                                    <a href="{{ route('aboutus') }}">About</a>
                                 </li>
-
                             </ul>
                         </nav>
                     </div>
@@ -505,6 +504,9 @@
                                 <span class="pro-count blue">4</span>
                             </a>
                         </div> --}}
+                        <form action="#" class="relatives">
+                            <input type="text" placeholder="Search for items…">
+                        </form>
 
                         @livewire('frontend.shopping-cart')
                     </div>
@@ -536,7 +538,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="index.html"><img src="{{ asset('frontend') }}/imgs/theme/logo.svg" alt="logo"></a>
+                <a href="{{ route('index') }}"><img src="{{ asset('frontend') }}/imgs/theme/logo.svg" alt="logo"></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -553,31 +555,6 @@
                 </form>
             </div>
             <div class="mobile-menu-wrap mobile-header-border">
-                <div class="main-categori-wrap mobile-header-border">
-                    <a class="categori-button-active-2" href="#">
-                        <span class="fi-rs-apps"></span> Browse Categories
-                    </a>
-                    <div class="categori-dropdown-wrap categori-dropdown-active-small">
-                        <ul>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-dress"></i>Women's Clothing</a>
-                            </li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-tshirt"></i>Men's Clothing</a>
-                            </li>
-                            <li> <a href="shop-grid-right.html"><i class="evara-font-smartphone"></i> Cellphones</a>
-                            </li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-desktop"></i>Computer & Office</a>
-                            </li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-cpu"></i>Consumer Electronics</a>
-                            </li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-home"></i>Home & Garden</a></li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-high-heels"></i>Shoes</a></li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-teddy-bear"></i>Mother & Kids</a>
-                            </li>
-                            <li><a href="shop-grid-right.html"><i class="evara-font-kite"></i>Outdoor fun</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- mobile menu start -->
                 <nav>
                     <ul class="mobile-menu">
                         <li>
@@ -586,35 +563,25 @@
                         <li>
                             <a href="{{ route('shop') }}">Shop</a>
                         </li>
-
+                        <li><a href="shop-grid-right.html">Category <i class="fi-rs-angle-down"></i></a>
+                            <ul class="sub-menu">
+                                @foreach ($categories as $category)
+                                <li><a href="{{ route('front.category',$category->slugs) }}">{{ $category->category_name }}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{{ route('contact') }}">Contact</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('aboutus') }}">About</a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
             </div>
-            <div class="mobile-header-info-wrap mobile-header-border">
-                <div class="single-mobile-header-info mt-30">
-                    <a href="page-contact.html"> Our location </a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="page-login-register.html">Log In / Sign Up </a>
-                </div>
-                <div class="single-mobile-header-info">
-                    <a href="#">(+01) - 2345 - 6789 </a>
-                </div>
-            </div>
-            <div class="mobile-social-icon">
-                <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg"
-                        alt=""></a>
-                <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-twitter.svg"
-                        alt=""></a>
-                <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-instagram.svg"
-                        alt=""></a>
-                <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-pinterest.svg"
-                        alt=""></a>
-                <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-youtube.svg"
-                        alt=""></a>
-            </div>
+
+
         </div>
     </div>
 </div>

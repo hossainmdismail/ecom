@@ -72,6 +72,7 @@ class CampaignController extends Controller
     public function edit(string $id)
     {
         $request = Campaign::find($id);
+
         return view('backend.campaign.campaign_edit', compact('request'));
     }
 

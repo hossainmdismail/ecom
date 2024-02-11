@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CampaignController;
+use App\Http\Controllers\Admin\CampaignProduct;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CountryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Admin\VariationController;
@@ -18,6 +20,7 @@ use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController as ControllersProductController;
+use App\Http\Controllers\SEOController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'home'])->name('index');
 
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/products/{slugs}', [ControllersProductController::class, 'single'])->name('product.view');
 Route::post('/add/cart', [ControllersProductController::class, 'cart'])->name('addtocart');
 Route::get('/categories/{slugs}', [ControllersCategoryController::class, 'index'])->name('front.category');
@@ -39,6 +42,11 @@ Route::get('/features', [FeaturesController::class, 'features'])->name('features
 Route::get('/hot-deal', [FeaturesController::class, 'hot'])->name('hot');
 Route::post('/order',[OrderController::class, 'order'])->name('user.order');
 Route::get('/thankyou',[OrderController::class, 'thankyou'])->name('thankyou');
+Route::get('/about',[HomeController::class, 'aboutus'])->name('aboutus');
+Route::get('/contact',[HomeController::class, 'contact'])->name('contact');
+Route::get('/campaign/{id}',[HomeController::class, 'campaign'])->name('campaign.product.list');
+Route::get('/privacy-policy',[HomeController::class, 'privacy'])->name('privacy');
+Route::get('/sitemap',[SEOController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware(['admin'])->prefix('sd_admin')->group(function () {
     //Admin
@@ -50,6 +58,7 @@ Route::middleware(['admin'])->prefix('sd_admin')->group(function () {
     Route::get('/order/view/{id}',[AdminOrder::class, 'orderView'])->name('admin.order.view');
     Route::post('/order/view/modify',[AdminOrder::class, 'orderViewModify'])->name('admin.order.modify');
     Route::post('/csv/download',[AdminOrder::class, 'csvDownload'])->name('csv.download');
+    Route::post('/campaign/product', [CampaignProduct::class, 'destroy'])->name('campaign.product');
     Route::resource('/category', CategoryController::class);
     Route::resource('/banner', BannerController::class);
     Route::resource('/config', ConfigController::class);

@@ -25,6 +25,11 @@ class Product extends Model
         return $this->hasMany(ProductService::class, 'product_id');
     }
 
+    public function campaigns()
+    {
+        return $this->belongsToMany(Campaign::class, 'campaign_products', 'product_id', 'campaign_id');
+    }
+
     public function getFinalPriceAttribute()
     {
         return $this->price - ($this->price * $this->discount / 100);

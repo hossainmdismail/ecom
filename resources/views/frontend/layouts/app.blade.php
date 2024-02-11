@@ -8,25 +8,24 @@ $config = Config::first();
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Evara - eCommerce HTML Template</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="">
-    <meta property="og:type" content="">
-    <meta property="og:url" content="">
-    <meta property="og:image" content="">
+    {!! SEO::generate(true) !!}
     <!-- Favicon -->
     @if ($config)
         <link rel="shortcut icon" href="{{ asset('files/config/'.$config->logo) }}" type="image/x-icon">
     @endif
-    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend') }}/imgs/theme/favicon.svg"> --}}
-    <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('frontend') }}/css/maind134.css?v=3.4">
     @livewireStyles
 </head>
 
-<body>
+<body class="relative">
+    {{-- Model --}}
+    {{-- <div class="position-absolute top-0 start-0" style="width: 100%; height: 100vh; background: #0000001c; z-index: 10;display: flex;align-items: center;justify-content: center;">
+        <div class="container bg-white p-4">
+            dd
+        </div>
+    </div> --}}
     {{-- headewr --}}
     @include('frontend.layouts.header')
     {{-- headewr --}}
@@ -37,22 +36,7 @@ $config = Config::first();
 
     {{-- footer --}}
     @include('frontend.layouts.footer')
-    {{-- footer --}}
-    <!-- Preloader Start -->
-    {{-- <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="text-center">
-                    <h5 class="mb-10">Now Loading</h5>
-                    <div class="loader">
-                        <div class="bar bar1"></div>
-                        <div class="bar bar2"></div>
-                        <div class="bar bar3"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+
     <!-- Vendor JS-->
     <script src="{{ asset('frontend') }}/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="{{ asset('frontend') }}/js/vendor/jquery-3.6.0.min.js"></script>
