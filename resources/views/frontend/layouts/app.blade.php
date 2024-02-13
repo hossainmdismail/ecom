@@ -10,8 +10,9 @@ $config = Config::first();
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {!! SEO::generate(true) !!}
-    <!-- Favicon -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Familly Bazar">
+    {!! SEO::generate() !!}
     @if ($config)
         <link rel="shortcut icon" href="{{ asset('files/config/'.$config->logo) }}" type="image/x-icon">
     @endif

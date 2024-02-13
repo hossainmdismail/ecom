@@ -171,8 +171,8 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><i class="fi-rs-smartphone"></i> <a href="#">(+01) - 2345 - 6789</a></li>
-                            <li><i class="fi-rs-marker"></i><a href="page-contact.html">Our location</a></li>
+                            <li><i class="fi-rs-smartphone"></i> <a href="#">(+880) 1888477155</a></li>
+                            <li><i class="fi-rs-marker"></i><a href="{{ route('contact') }}">Our location</a></li>
                         </ul>
                     </div>
                 </div>
@@ -497,24 +497,10 @@
                 </div>
                 <div class="header-action-right d-none d-lg-block">
                     <div class="header-action-2">
-                        {{-- <div class="header-action-icon-2">
-                            <a href="shop-wishlist.html">
-                                <img class="svgInject" alt="Evara"
-                                    src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg">
-                                <span class="pro-count blue">4</span>
-                            </a>
-                        </div> --}}
-                        <form action="#" class="relatives">
-                            <input type="text" placeholder="Search for items…">
-                        </form>
 
                         @livewire('frontend.shopping-cart')
                     </div>
                 </div>
-                {{-- <div class="hotline d-none d-lg-block">
-                    <p><i class="fi-rs-headset"></i><span>Hotline</span> 1900 - 888 </p>
-                </div> --}}
-                {{-- <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p> --}}
                 <div class="header-action-right d-block d-lg-none">
                     <div class="header-action-2">
                         {{-- shpping cart --}}
