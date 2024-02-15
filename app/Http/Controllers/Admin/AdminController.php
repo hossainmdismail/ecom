@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Campaign;
+use App\Models\Order;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Photo;
@@ -17,7 +21,17 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('backend.home.home');
+        $product = Product::all();
+        $cat = ProductCategory::all()->count();
+        $order = Order::all()->count();
+        $camp = Campaign::all()->count();
+        return view('backend.home.home',[
+            'total_product' => $product->count(),
+            'total_price'   => $product->sum('price'),
+            'total_cat'     => $cat,
+            'order'         => $order,
+            'camp'          => $camp,
+        ]);
     }
     function admin_login()
     {
