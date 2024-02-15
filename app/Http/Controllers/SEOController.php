@@ -8,6 +8,7 @@ use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 use App\Models\ProductCategory;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 
 class SEOController extends Controller
 {
@@ -25,45 +26,23 @@ class SEOController extends Controller
             ->add(Url::create('/about')
                 ->setLastModificationDate(Carbon::now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                ->setPriority(0.1))
-            ->add(Url::create('/grid/project')
-                ->setLastModificationDate(Carbon::now())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                ->setPriority(0.1))
-            ->add(Url::create('/list/blog')
-                ->setLastModificationDate(Carbon::now())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                ->setPriority(0.1))
-            ->add(Url::create('/talk')
-                ->setLastModificationDate(Carbon::now())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                ->setPriority(0.1))
-            ->add(Url::create('/privacy-policy')
-                ->setLastModificationDate(Carbon::now())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                 ->setPriority(0.1));
 
         //Dynamic Project
-        foreach ($project as $projects) {
-            $sitemap->add(Url::create('/project' . '/' . $projects->slugs)
+        foreach ($category as $cat) {
+            $sitemap->add(Url::create('/categories' . '/' . $cat->slugs)
                 ->setLastModificationDate(Carbon::now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.1));
         }
         //Dynamic Service
-        foreach ($services as $service) {
-            $sitemap->add(Url::create('/ourservice' . '/' . $service->slugs)
+        foreach ($product as $pro) {
+            $sitemap->add(Url::create('/products' . '/' . $pro->slugs)
                 ->setLastModificationDate(Carbon::now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.1));
         }
-        //Dynamic Blog
-        foreach ($blogs as $blog) {
-            $sitemap->add(Url::create('/front/blog' . '/' . $blog->slugs)
-                ->setLastModificationDate(Carbon::now())
-                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                ->setPriority(0.1));
-        }
+
 
         $sitemap->writeToFile(public_path('sitemap.xml'));
 
@@ -72,3 +51,13 @@ class SEOController extends Controller
         return response()->download(public_path('sitemap.xml'), 'sitemap.xml');
     }
 }
+
+
+// ->add(Url::create('/about')
+//                 ->setLastModificationDate(Carbon::now())
+//                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+//                 ->setPriority(0.1))
+//             ->add(Url::create('/grid/project')
+//                 ->setLastModificationDate(Carbon::now())
+//                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+//                 ->setPriority(0.1));

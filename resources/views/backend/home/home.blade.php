@@ -7,7 +7,7 @@
             <p>Welcome <strong>{{ Auth::guard('admin')->user()->name }}</p>
         </div>
         <div>
-            <a href="#" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Create report</a>
+            <a href="{{ route('sitemap') }}" class="btn btn-primary"><i class="text-muted material-icons md-post_add"></i>Site Map</a>
         </div>
     </div>
     <div class="row">

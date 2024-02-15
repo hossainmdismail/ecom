@@ -12,7 +12,7 @@ class ProductController extends Controller
 
         $product = Product::where('slugs',$slugs)->first();
         $relatedProduct = null;
-        if ($product->category->id) {
+        if ($product->category) {
             $relatedProduct = Product::where('category_id', $product->category->id)->get();
         }
         return view('frontend.productView',[
