@@ -49,7 +49,6 @@ Route::get('/privacy-policy',[HomeController::class, 'privacy'])->name('privacy'
 Route::get('/sitemap',[SEOController::class, 'sitemap'])->name('sitemap');
 
 Route::middleware(['admin'])->prefix('sd_admin')->group(function () {
-    //Admin
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::resource('/country', CountryController::class);
     Route::get('/create/admin', [AdminController::class, 'create_admin'])->name('create.admin');

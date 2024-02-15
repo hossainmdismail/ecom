@@ -13,8 +13,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-4">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h4>Add New Banner</h4>
+                    <a href="{{ route('banner.index') }}" class="btn btn-primary">List</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('banner.store') }}" method="POST" enctype="multipart/form-data">
@@ -62,7 +63,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label"></label>
-                                    <button type="submit" class="btn btn-light rounded font-sm mr-5 text-body hover-up">+ Admin</button>
+                                    <button type="submit" class="btn btn-light rounded font-sm mr-5 text-body hover-up">+ Add Banner</button>
                                 </div>
                             </div>
                         </div>

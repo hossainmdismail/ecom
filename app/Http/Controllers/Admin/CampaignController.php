@@ -84,6 +84,7 @@ class CampaignController extends Controller
         $request->validate([
             'campaign_name' => 'required|max:255',
         ]);
+
         Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name);
         Campaign::where('id', $id)->update([
             'campaign_for'      => $request->campaign_for,

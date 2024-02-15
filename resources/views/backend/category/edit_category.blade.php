@@ -16,7 +16,7 @@
                 <div class="card-header d-flex justify-content-between">
                     <h4>Edit Category</h4>
 
-                    <a href="{{ route('category.index') }}">List</a>
+                    <a href="{{ route('category.index') }}" class="btn btn-primary">List</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">

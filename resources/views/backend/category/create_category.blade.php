@@ -13,8 +13,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-4">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h4>Add New Category</h4>
+                    <a href="{{ route('category.index') }}" class="btn btn-primary">List</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">

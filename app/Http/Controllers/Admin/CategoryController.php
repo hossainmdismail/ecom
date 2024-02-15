@@ -20,21 +20,16 @@ class CategoryController extends Controller
         return view('backend.category.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('backend.category.create_category');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
-            'category_name' => 'required',
+            'category_name'     => 'required',
+            'category_image'    => 'required',
         ]);
         Photo::upload($request->category_image, 'files/category', $request->category_name);
         ProductCategory::insert([
@@ -54,7 +49,7 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        dd($id);
     }
 
     /**
@@ -76,18 +71,20 @@ class CategoryController extends Controller
             'category_name' => 'required',
         ]);
 
-        if ($request->category_image != null) {
-            Photo::upload($request->category_image, 'files/category', $request->category_name);
+        $category = ProductCategory::find($id);
+        $category->category_name    = $request->category_name;
+        $category->slugs            = Str::slug($request->category_name);
+        $category->seo_title        = $request->seo_title;
+        $category->seo_description  = $request->seo_description;
+        $category->seo_tags         = $request->seo_tags;
+
+        if ($request->category_image) {
+            Photo::delete('files/category',$category->category_image);
+            Photo::upload($request->category_image, 'files/category', 'CAT');
+            $category->category_image  = Photo::$name;
         }
-        ProductCategory::where('id', $id)->update([
-            'category_name'     => $request->category_name,
-            'slugs'             => Str::slug($request->category_name),
-            'category_image'    => $request->category_image != null? Photo::$name:null,
-            'seo_title'         => $request->seo_title,
-            'seo_description'   => $request->seo_description,
-            'seo_tags'          => $request->seo_tags,
-            'updated_at'        => Carbon::now(),
-        ]);
+
+        $category->save();
         return back();
     }
 
@@ -97,6 +94,10 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = ProductCategory::find($id);
-        return 'sdf';
+        if ($category->category_image) {
+            Photo::delete('files/category',$category->category_image);
+        }
+        $category->delete();
+        return back();
     }
 }

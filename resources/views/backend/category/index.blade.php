@@ -13,23 +13,9 @@
     <div class="card mb-4">
         <header class="card-header">
             <div class="row gx-3">
-                <div class="col-lg-4 col-md-6 me-auto">
-                    <input type="text" placeholder="Search..." class="form-control">
-                </div>
+
                 <div class="col-lg-2 col-6 col-md-3">
-                    <select class="form-select">
-                        <option>Status</option>
-                        <option>Active</option>
-                        <option>Disabled</option>
-                        <option>Show all</option>
-                    </select>
-                </div>
-                <div class="col-lg-2 col-6 col-md-3">
-                    <select class="form-select">
-                        <option>Show 20</option>
-                        <option>Show 30</option>
-                        <option>Show 40</option>
-                    </select>
+                    <a href="{{ route('category.create') }}" class="btn btn-primary">Create</a>
                 </div>
             </div>
         </header> <!-- card-header end// -->
@@ -54,10 +40,16 @@
                             </td>
                             <td><b>{{ $category->seo_title }}</b></td>
                             <td><b>{{ $category->seo_tags }}</b></td>
-                            <td class="text-end">
-                                <a href="{{ route('category.edit', $category->id) }}" class="btn btn-md rounded font-sm">Edit</a>
-                                <a href="{{ route('category.destroy', $category->id) }}" class="btn btn-md bg-warning rounded font-sm">Delete</a>
-                            </td>
+                            <form action="{{ route('category.destroy',$category->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <td class="text-end">
+                                    <a href="{{ route('category.edit', $category->id) }}" class="btn btn-md rounded font-sm">Edit</a>
+                                    @if (Auth::guard('admin')->user()->role == 'superAdmin')
+                                        <button type="submit" class="btn btn-md bg-warning rounded font-sm">Delete</button>
+                                    @endif
+                                </td>
+                            </form>
                         </tr>
                         @endforeach
                     </tbody>

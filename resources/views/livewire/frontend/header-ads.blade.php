@@ -9,7 +9,7 @@
                                 <div class="container">
                                     <div class="slider-1-height-3 slider-animated-1">
                                         <div class="hero-slider-content-2">
-                                            <h4 class="animated">{{ $banner->category->category_name }}</h4>
+                                            <h4 class="animated">{{ $banner->category?$banner->category->category_name:'unkown' }}</h4>
                                             <h2 class="animated fw-900">{{ $banner->banner_title }}</h2>
                                             <h1 class="animated fw-900 text-brand">On All Products</h1>
                                             <p class="animated">{{ $banner->banner_description }}</p>
