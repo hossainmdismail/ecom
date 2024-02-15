@@ -203,15 +203,17 @@
                             No Data Found
                         @endforelse
                     </div>
+                    @if ($horizontal)
+                        <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
 
-                    <div class="banner-img wow fadeIn mb-45 animated d-lg-block d-none">
-                        <img src="{{ asset('files/campaign/'.$horizontal->campaign_image) }}" alt="">
-                        <div class="banner-text">
-                            <span>{{ $horizontal->campaign_for }}</span>
-                            <h4>{{ $horizontal->campaign_name }}</h4>
-                            <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <img src="{{ asset('files/campaign/'.$horizontal->campaign_image) }}" alt="">
+                            <div class="banner-text">
+                                <span>{{ $horizontal->campaign_for }}</span>
+                                <h4>{{ $horizontal->campaign_name }}</h4>
+                                <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </div>
