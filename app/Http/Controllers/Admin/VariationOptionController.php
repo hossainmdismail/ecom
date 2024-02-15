@@ -33,7 +33,6 @@ class VariationOptionController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< Updated upstream
         $request->validate([
             'option_name' => 'required',
         ]);
@@ -42,22 +41,6 @@ class VariationOptionController extends Controller
             'option_name' =>$request->option_name,
         ]);
         return back()->with('succ', 'Variation Option Added...');
-=======
-        dd($request->all());
-        // $variotionoptions = $request->option_name;
-        if (Service::where('option_name', $request->option_name)->where('variation_id', $request->variation_id)->first()) {
-            return back()->with('error', 'You already have this variation option');
-        } else {
-            $request->validate([
-                'option_name' => 'required',
-            ]);
-            Service::insert([
-                'variation_id' => $request->variation_id,
-                'option_name' => $request->option_name,
-            ]);
-            return back()->with('succ', 'Variation Option Added...');
-        }
->>>>>>> Stashed changes
     }
 
     /**

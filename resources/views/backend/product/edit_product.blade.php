@@ -45,8 +45,7 @@
                                                     <label for="product_name" class="form-label">Select A Category</label>
                                                     <select class="form-select" name="category_id">
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}"
-                                                                {{ $request->category->id == $category->id ? 'selected' : '' }}>
+                                                            <option value="{{ $category->id }}" @if ($request->category) {{ $request->category->id == $category->id ? 'selected' : '' }} @endif>
                                                                 {{ $category->category_name }}
                                                             </option>
                                                         @endforeach
@@ -152,8 +151,8 @@
                                         </select>
                                     </div>
 
-                                    <hr>
 
+                                    {{-- <hr>
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Services</label>
@@ -172,7 +171,7 @@
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                             </div>

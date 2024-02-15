@@ -13,8 +13,9 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card mb-4">
-                <div class="card-header">
+                <div class="card-header d-flex d-flex justify-content-between">
                     <h4>Create New Campaign</h4>
+                    <a href="{{ route('campaign.index') }}" class="btn btn-primary">List</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('campaign.store') }}" method="POST" enctype="multipart/form-data">
@@ -56,7 +57,7 @@
                                     <input type="file" class="form-control" name="campaign_image">
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-6 mb-4">
                                 <label for="product_name" class="form-label">Image type</label>
                                 <select class="form-select" name="image_type" id="">
                                     <option value="">Select Type</option>
@@ -67,7 +68,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-4">
                                     <label for="product_name" class="form-label"></label>
-                                    <button type="submit" class="btn btn-light rounded font-sm mr-5 text-body hover-up">+ Admin</button>
+                                    <button type="submit" class="btn btn-light rounded font-sm mr-5 text-body hover-up">+ Add Campaign</button>
                                 </div>
                             </div>
                         </div>

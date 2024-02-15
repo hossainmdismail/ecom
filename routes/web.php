@@ -63,7 +63,7 @@ Route::middleware(['admin'])->prefix('sd_admin')->group(function () {
     Route::resource('/config', ConfigController::class);
     Route::resource('/campaign', CampaignController::class);
     Route::resource('/variation', VariationController::class);
-    Route::resource('/product', ProductController::class);
+    Route::resource('/product', App\Http\Controllers\Admin\ProductController::class);
     Route::resource('/shipping', ShippingController::class);
     Route::resource('/variation_option', VariationOptionController::class);
     Route::resource('/campaign-product', CampaignController::class);

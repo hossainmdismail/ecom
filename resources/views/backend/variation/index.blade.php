@@ -24,12 +24,17 @@
                             @foreach ($requests as $key => $request)
                                 <tr>
                                     <td><b>{{ $request->message }}</b></td>
-                                    <td class="text-end">
-                                        <a href="{{ route('variation.edit', $request->id) }}"
-                                            class="btn btn-md rounded font-sm">Edit</a>
-                                        <a href="{{ route('variation.destroy', $request->id) }}"
-                                            class="btn btn-md bg-warning rounded font-sm">Delete</a>
-                                    </td>
+                                    <form action="{{ route('variation.destroy', $request->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <td class="text-end">
+                                            <a href="{{ route('variation.edit', $request->id) }}"
+                                                class="btn btn-md rounded font-sm">Edit</a>
+                                            @if (Auth::guard('admin')->user()->role == 'superAdmin')
+                                                <button type="submit" class="btn btn-md bg-warning rounded font-sm">Delete</button>
+                                            @endif
+                                        </td>
+                                    </form>
                                 </tr>
                             @endforeach
                         </tbody>

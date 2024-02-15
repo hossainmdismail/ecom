@@ -38,6 +38,7 @@
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Launch demo modal
                       </button>
+                      <a href="{{ route('campaign.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 <div class="card-body">
                     <form action="{{ route('campaign.update', $request->id) }}" method="POST" enctype="multipart/form-data">

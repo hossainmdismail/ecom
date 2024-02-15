@@ -26,6 +26,14 @@ class SEOController extends Controller
             ->add(Url::create('/about')
                 ->setLastModificationDate(Carbon::now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                ->setPriority(0.1))
+            ->add(Url::create('/contact')
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                ->setPriority(0.1))
+            ->add(Url::create('/privacy-policy')
+                ->setLastModificationDate(Carbon::now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                 ->setPriority(0.1));
 
         //Dynamic Project

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProductCategory;
 use App\Models\Service;
 use App\Models\Variation;
 use Carbon\Carbon;
@@ -80,6 +79,7 @@ class VariationController extends Controller
      */
     public function destroy(string $id)
     {
-        dd($id);
+        Service::find($id)->delete();
+        return back();
     }
 }

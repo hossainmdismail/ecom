@@ -23,18 +23,13 @@
             <div class="row">
                 <div class="col-md-4 text-center mb-md-0 mb-4">
                     <img class="btn-shadow-brand hover-up border-radius-10 bg-brand-muted wow fadeIn animated" src="assets/imgs/page/company-1.jpg" alt="">
-                    <h4 class="mt-30 mb-15 wow fadeIn animated">New York, USA</h4>
-                    <p class="text-grey-3 wow fadeIn animated">27 Division St, New York<br>NY 10002, USA</p>
+                    <h4 class="mt-30 mb-15 wow fadeIn animated">Dhaka</h4>
+                    <p class="text-grey-3 wow fadeIn animated">Zigatola Monesshor Road, Dhanmondi Dhaka - 1209</p>
                 </div>
                 <div class="col-md-4 text-center mb-md-0 mb-4">
                     <img class="btn-shadow-brand hover-up border-radius-10 bg-brand-muted wow fadeIn animated" src="assets/imgs/page/company-2.jpg" alt="">
-                    <h4 class="mt-30 mb-15 wow fadeIn animated">Paris, France</h4>
-                    <p class="text-grey-3 wow fadeIn animated">22 Rue des Carmes<br> 75005 Paris</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img class="btn-shadow-brand hover-up border-radius-10 bg-brand-muted wow fadeIn animated" src="assets/imgs/page/company-3.jpg" alt="">
-                    <h4 class="mt-30 mb-15 wow fadeIn animated">Jakarta, Indonesia</h4>
-                    <p class="text-grey-3 wow fadeIn animated">2476 Raya Yogyakarta,<br>89090 Indonesia</p>
+                    <h4 class="mt-30 mb-15 wow fadeIn animated">Dhanmondi</h4>
+                    <p class="text-grey-3 wow fadeIn animated">Zigatola Monesshor Road, Dhanmondi Dhaka - 1209</p>
                 </div>
             </div>
         </div>

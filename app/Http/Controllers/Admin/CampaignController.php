@@ -41,9 +41,9 @@ class CampaignController extends Controller
         $size = null;
 
         if ($request->image_type == 'horizontal') {
-            Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name,[966,542]);
+            Photo::upload($request->campaign_image, 'files/campaign', 'CAMP',[966,542]);
         }elseif ($request->image_type == 'vertical') {
-            Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name,[600,712]);
+            Photo::upload($request->campaign_image, 'files/campaign', 'CAMP',[600,712]);
         }
         Campaign::insert([
             'campaign_for'      => $request->campaign_for,
@@ -85,25 +85,37 @@ class CampaignController extends Controller
             'campaign_name' => 'required|max:255',
         ]);
 
-        Photo::upload($request->campaign_image, 'files/campaign', $request->campaign_name);
-        Campaign::where('id', $id)->update([
-            'campaign_for'      => $request->campaign_for,
-            'campaign_name'     => $request->campaign_name,
-            'campaign_image'    => Photo::$name,
-            'image_type'        => $request->image_type,
-            'percentage'        => $request->percentage,
-            'start'             => $request->start,
-            'end'               => $request->end,
-            'created_at'        => Carbon::now(),
-        ]);
+
+        $campaign = Campaign::find($id);
+        $campaign->campaign_for     = $request->campaign_for;
+        $campaign->campaign_name    = $request->campaign_name;
+        $campaign->percentage       = $request->percentage;
+        $campaign->start            = $request->start;
+        $campaign->end              = $request->end;
+
+        if ($request->campaign_image) {
+            $request->validate([
+                'campaign_image'    => 'required',
+                'image_type'        => 'required',
+            ]);
+
+            Photo::delete('files/campaign',$campaign->campaign_image);
+            Photo::upload($request->campaign_image, 'files/campaign', 'CAMP');
+            $campaign->image_type  = $request->image_type;
+            $campaign->campaign_image  = Photo::$name;
+        }
+
+        $campaign->save();
         return back()->with('succ', 'Campaign Updated...');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $campaign = Campaign::find($id);
+        if ($campaign->campaign_image) {
+            Photo::delete('files/campaign',$campaign->campaign_image);
+        }
+        $campaign->delete();
+        return back();
     }
 }
