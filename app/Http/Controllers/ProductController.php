@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Helpers\CookieSD;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,16 @@ class ProductController extends Controller
         if ($product->category) {
             $relatedProduct = Product::where('category_id', $product->category->id)->get();
         }
+
+        if ($product) {
+            SEOMeta::setTitle('Product');
+            SEOMeta::addMeta('title', $product->seo_title);
+            SEOTools::setDescription($product->seo_description);
+            SEOMeta::addKeyword($product->seo_tags);
+        }
+
+        SEOMeta::setCanonical('https://synexdigital.com' . request()->getPathInfo());
+
         return view('frontend.productView',[
             'product' => $product,
             'related' => $relatedProduct

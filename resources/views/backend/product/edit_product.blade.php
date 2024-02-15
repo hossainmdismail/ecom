@@ -150,28 +150,27 @@
                                                 Stock</option>
                                         </select>
                                     </div>
-
-
-                                    {{-- <hr>
+                                    <hr>
                                     <div class="col-12">
                                         <div class="mb-4">
                                             <label for="product_name" class="form-label">Services</label>
 
                                             <div class="mt-2">
-                                                @foreach ($services as $service)
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" name="service[]" type="checkbox"
-                                                            value="{{ $service->id }}" id="{{ $service->id }}">
-                                                        <label class="form-check-label" style="font-size: 10.5px"
-                                                            for="{{ $service->id }}">
-                                                            {{ $service->message }} </label>
-                                                    </div>
-                                                @endforeach
-
+                                                @if ($request->services)
+                                                    @foreach ($request->services as $service)
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" name="service[]" type="checkbox"
+                                                                value="{{ $service->id }}" id="{{ $service->id }}">
+                                                            <label class="form-check-label" style="font-size: 10.5px"
+                                                                for="{{ $service->id }}">
+                                                                {{ $service->message }} </label>
+                                                        </div>
+                                                    @endforeach
+                                                @endif
                                             </div>
                                         </div>
 
-                                    </div> --}}
+                                    </div>
 
                                 </div>
                             </div>

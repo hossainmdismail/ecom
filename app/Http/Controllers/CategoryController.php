@@ -10,11 +10,15 @@ use Artesaos\SEOTools\Facades\SEOMeta;
 class CategoryController extends Controller
 {
     function index($slugs){
-        $category = ProductCategory::find($slugs);
-        dd($category);
-        SEOMeta::setTitle('Category');
-        SEOTools::setDescription('Cat');
-        SEOMeta::addKeyword(['cat', 'cat', 'catt']);
+        $category = ProductCategory::where('slugs',$slugs)->first();
+
+        if ($category) {
+            SEOMeta::setTitle('Category');
+            SEOMeta::addMeta('title', $category->seo_title);
+            SEOTools::setDescription($category->seo_description);
+            SEOMeta::addKeyword($category->seo_tags);
+        }
+
         SEOMeta::setCanonical('https://synexdigital.com' . request()->getPathInfo());
         return view('frontend.category',['slugs' => $slugs]);
     }
