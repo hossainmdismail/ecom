@@ -27,7 +27,7 @@
                             <tbody>
                                 @foreach ($products['products'] as $product)
                                     <tr>
-                                        @if ($product->images)
+                                        @if ($product->images->first())
                                             <td class="image product-thumbnail"><img src="{{ asset('files/product/' . $product->images->first()->image) }}" alt="#"></td>
                                         @endif
                                         <td class="product-des product-name">
@@ -83,9 +83,9 @@
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class=" border-radius cart-totals">
-                                    {{-- <div class="heading_s1 mb-3">
-                                        <h4>Cart Totals</h4>
-                                    </div> --}}
+                                    @error('cart')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                     <div class="table-responsive">
                                         <table class="table">
                                             <tbody>

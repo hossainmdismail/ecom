@@ -59,6 +59,11 @@ class Checkout extends Component
             return back();
         }
 
+        if (CookieSD::data()['total'] == 0) {
+            $this->addError('cart', 'Cart is empty');
+            return;
+        }
+
         //getting cookie data
         $cookieData = CookieSD::data();
 

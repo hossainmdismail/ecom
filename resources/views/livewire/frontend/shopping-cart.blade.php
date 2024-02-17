@@ -14,7 +14,7 @@
                     <div class="shopping-cart-img">
 
 
-                        @if ($product->images)
+                        @if ($product->images->first())
                             <a href="shop-product-right.html"><img alt="Evara"
                                 src="{{ asset('files/product/' . $product->images->first()->image) }}">
                             </a>

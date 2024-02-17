@@ -171,7 +171,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info">
                         <ul>
-                            <li><i class="fi-rs-smartphone"></i> <a href="#">(+880) 1888477155</a></li>
+                            <li><i class="fi-rs-smartphone"></i> <a href="#">1888477155</a></li>
                             <li><i class="fi-rs-marker"></i><a href="{{ route('contact') }}">Our location</a></li>
                         </ul>
                     </div>
@@ -180,10 +180,10 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>Get great devices up to 50% off <a href="shop-grid-right.html">View details</a>
+                                <li>Get great devices up to 50% off <a href="{{ route('shop') }}">View details</a>
                                 </li>
                                 <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today <a href="shop-grid-right.html">Shop
+                                <li>Trendy 25silver jewelry, save up 35% off today <a href="{{ route('shop') }}">Shop
                                         now</a></li>
                             </ul>
                         </div>

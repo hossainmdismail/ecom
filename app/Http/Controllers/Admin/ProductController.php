@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductPhoto;
@@ -41,8 +42,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-
         $request->validate([
             'btn'               => 'required',
             'category_id'       => 'required',
@@ -52,49 +51,60 @@ class ProductController extends Controller
             'price'             => 'required',
             'discount'          => 'required',
             'stock_status'      => 'required',
+            // 'service'           => 'required',
 
         ]);
 
-        $product = new Product();
-        $product->category_id       = $request->category_id;
-        $product->name              = $request->product_name;
-        $product->slugs             = Str::slug($request->product_name);
-        $product->short_description = $request->short_description;
-        $product->description       = $request->description;
-        $product->discount          = $request->discount;
-        $product->price             = $request->price;
-        $product->link              = $request->link;
-        $product->stock_status      = $request->stock_status;
-        $product->status            = $request->btn;
-        $product->featured          = $request->featured == 'on' ? 1 : 0;
-        $product->popular           = $request->popular == 'on' ? 1 : 0;
-        $product->seo_title         = $request->seo_title;
-        $product->seo_description   = $request->seo_description;
-        $product->seo_tags          = $request->seo_tags;
-        $product->save();
+        //create a unique slugs for product
 
-        $product_id = $product->id;
+        DB::beginTransaction();
 
-        $ss = null;
+        try {
 
-        if ($product) {
-            foreach ($request->service as $service) {
-                $ss .= $service;
-                ProductService::insert([
-                    'product_id' => $product_id,
-                    'service_id' => $service,
-                    'created_at' => Carbon::now(),
-                ]);
+            $product = new Product();
+            $product->category_id       = $request->category_id;
+            $product->name              = $request->product_name;
+            $product->slugs             = Str::slug($request->product_name);
+            $product->short_description = $request->short_description;
+            $product->description       = $request->description;
+            $product->discount          = $request->discount;
+            $product->price             = $request->price;
+            $product->link              = $request->link;
+            $product->stock_status      = $request->stock_status;
+            $product->status            = $request->btn;
+            $product->featured          = $request->featured == 'on' ? 1 : 0;
+            $product->popular           = $request->popular == 'on' ? 1 : 0;
+            $product->seo_title         = $request->seo_title;
+            $product->seo_description   = $request->seo_description;
+            $product->seo_tags          = $request->seo_tags;
+            $product->save();
+
+            $product_id = $product->id;
+
+            if ($product) {
+                foreach ($request->service as $service) {
+                    ProductService::insert([
+                        'product_id' => $product_id,
+                        'service_id' => $service,
+                        'created_at' => Carbon::now(),
+                    ]);
+                }
+
+                foreach ($request->images as  $image) {
+                    Photo::upload($image, 'files/product',  $product_id . 'PRO', [1100, 1100]);
+                    ProductPhoto::insert([
+                        'product_id'    => $product_id,
+                        'image'         => Photo::$name,
+                    ]);
+                }
             }
 
-            foreach ($request->images as  $image) {
-                Photo::upload($image, 'files/product',  $product_id . 'PRO', [1100, 1100]);
-                ProductPhoto::insert([
-                    'product_id'    => $product_id,
-                    'image'         => Photo::$name,
-                ]);
-            }
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollback();
+            return back()->with('err', 'Failed to add product, try again.');
         }
+
         return back()->with('succ', 'Product added successfully');
     }
 
@@ -133,6 +143,8 @@ class ProductController extends Controller
             'stock_status'      => 'required',
 
         ]);
+
+        // $slugs = Str::slug($request->product_name);
 
 
         $product = Product::find($id);
