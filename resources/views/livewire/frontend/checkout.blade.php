@@ -105,7 +105,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <button type="submit" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</button>
+                                    <button type="submit" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Complete your order</button>
                                 </div>
                             </div>
                         </div>

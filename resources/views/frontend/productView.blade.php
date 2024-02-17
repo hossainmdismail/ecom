@@ -70,13 +70,13 @@
                                         </div>
                                         <input type="hidden" name="qnt" id="inputQntValue" value="1">
                                         <input type="hidden" name="id" class="inputQntValue" value="{{ $product->id }}">
-                                        <div class="product-extra-link2">
-                                            <button type="submit" name="btn" value="cart"  class="button button-add-to-cart">Add to cart</button>
-                                            <button type="submit" name="btn" value="buy" class="button button-add-to-cart">Order Now</button>
+                                        <div class="w-100 d-flex gap-3 flex-sm-row flex-column">
+                                            <button type="submit" name="btn" value="cart"  class=" button d-block mb-md-3 button-add-to-cart">Add to cart</button>
+                                            <button type="submit" name="btn" value="buy" class=" button d-block mb-3 button-add-to-cart">Order Now</button>
                                             {{-- <a aria-label="Add To Wishlist" class="action-btn hover-up" href="shop-wishlist.html"><i class="fi-rs-heart"></i></a> --}}
                                         </div>
                                     </form>
-                                    <a href="tel:+8801888477155" class="btn btn-sm mt-3">Call Us : 01888477155</a>
+                                    <a href="tel:+8801888477155" class="btn btn-outline btn-sm text-primary">Call Us : 01888477155</a>
                                     <ul class="product-meta font-xs color-grey mt-50">
                                         <li>Availability:<span class="in-stock text-{{ $product->stock_status == 1 ? 'success':'danger' }} ml-5">{{ $product->stock_status == 1 ? 'Available':'Stock Out' }}</span></li>
                                     </ul>
