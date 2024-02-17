@@ -15,14 +15,14 @@
 
 
                         @if ($product->images->first())
-                            <a href="shop-product-right.html"><img alt="Evara"
+                            <a href="#"><img alt="Evara"
                                 src="{{ asset('files/product/' . $product->images->first()->image) }}">
                             </a>
                         @endif
 
                     </div>
                     <div class="shopping-cart-title">
-                        <h4><a href="shop-product-right.html">{{ $product->name }}</a></h4>
+                        <h4><a href="#">{{ $product->name }}</a></h4>
                         <h4><span>{{ $product->quantity }} × </span>{{ $product->finalPrice }} ৳</h4>
                     </div>
                     <div class="shopping-cart-delete">
@@ -37,7 +37,7 @@
             </div>
             <div class="shopping-cart-button">
                 <a href="{{route('checkout')}}" class="outline">View cart</a>
-                <a href="shop-checkout.html">Checkout</a>
+                <a href="#">Checkout</a>
             </div>
         </div>
     </div>

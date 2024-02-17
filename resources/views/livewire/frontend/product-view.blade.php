@@ -121,7 +121,7 @@
                                 <!-- Detail Info -->
                             </div>
                         </div>
-                        <div class="tab-style3">
+                        {{-- <div class="tab-style3">
                             <ul class="nav nav-tabs text-uppercase">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
@@ -536,7 +536,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="banner-img banner-big wow fadeIn f-none animated mt-50">
                             <img class="border-radius-10" src="assets/imgs/banner/banner-4.png" alt="">
                             <div class="banner-text">

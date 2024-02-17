@@ -14,7 +14,7 @@
                                             <h1 class="animated fw-900 text-brand">On All Products</h1>
                                             <p class="animated">{{ $banner->banner_description }}</p>
                                             <a class="animated btn btn-brush btn-brush-3"
-                                                href="shop-product-right.html"> Shop Now </a>
+                                                href="#"> Shop Now </a>
                                         </div>
                                         <div class="slider-img">
                                             <img src="{{ asset('files/banner/' . $banner->banner_image) }}"
@@ -28,7 +28,7 @@
                     <div class="slider-arrow hero-slider-1-arrow style-3"></div>
                 </div>
             </div>
-            <div class="col-lg-3 d-md-none d-lg-block">
+            <div class="col-lg-3 d-none d-sm-block">
                 @if ($header_one)
                     <div class="banner-img banner-1 wow fadeIn  animated home-3">
                         <img class="border-radius-10" src="{{ asset('files/campaign/' . $header_one->campaign_image) }}"

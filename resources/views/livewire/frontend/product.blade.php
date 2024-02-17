@@ -35,7 +35,7 @@
                                 <div class="product-content-wrap">
                                     <div class="product-category">
                                         <a
-                                            href="shop-grid-right.html">{{ $featured->category ? $featured->category->category_name : 'Random' }}</a>
+                                            href="#">{{ $featured->category ? $featured->category->category_name : 'Random' }}</a>
                                     </div>
                                     <h2><a
                                             href="{{ route('product.view', $featured->slugs) }}">{{ $featured->name }}</a>
@@ -162,7 +162,7 @@
                             <div class="product-content-wrap">
                                 <div class="product-category">
                                     <a
-                                        href="shop-grid-right.html">{{ $latest->category ? $latest->category->category_name : 'Random' }}</a>
+                                        href="#">{{ $latest->category ? $latest->category->category_name : 'Random' }}</a>
                                 </div>
                                 <h2><a href="{{ route('product.view', $latest->slugs) }}">{{ $latest->name }}</a>
                                 </h2>

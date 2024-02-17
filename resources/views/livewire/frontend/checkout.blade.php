@@ -31,7 +31,7 @@
                                             <td class="image product-thumbnail"><img src="{{ asset('files/product/' . $product->images->first()->image) }}" alt="#"></td>
                                         @endif
                                         <td class="product-des product-name">
-                                            <h5 class="product-name"><a href="shop-product-right.html">{{ $product->name }}</a></h5>
+                                            <h5 class="product-name"><a href="{{ route('product.view', $product->slugs) }}">{{ $product->name }}</a></h5>
                                             {{-- <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
                                             </p> --}}
                                         </td>
@@ -39,7 +39,8 @@
                                         <td class="text-center" data-title="Stock">
                                             <div class="detail-qty border radius  m-auto">
                                                 <a wire:click="decrement({{$product->id}})" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">{{ $product->quantity }}</span>
+                                                <span wire:loading class="spinner-border spinner-border-sm"></span>
+                                                <span class="qty-val" wire:loading.remove> {{ $product->quantity }}</span>
                                                 <a wire:click="increment({{$product->id}})" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                             </div>
                                         </td>

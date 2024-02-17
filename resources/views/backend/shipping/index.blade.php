@@ -60,7 +60,7 @@
                                         <td class="text-end">
                                             <a href="{{ route('shipping.edit', $shipping->id) }}" class="btn btn-md rounded font-sm">Edit</a>
 
-                                            <a href="{{ route('shipping.destroy', $shipping->id) }}" class="btn btn-md bg-warning rounded font-sm">Delete</a>
+                                            {{-- <a href="{{ route('shipping.destroy', $shipping->id) }}" class="btn btn-md bg-warning rounded font-sm">Delete</a> --}}
 
                                         </td>
                                     </tr>

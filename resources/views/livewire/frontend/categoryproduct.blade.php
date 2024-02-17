@@ -210,7 +210,7 @@
                             <div class="banner-text">
                                 <span>{{ $horizontal->campaign_for }}</span>
                                 <h4>{{ $horizontal->campaign_name }}</h4>
-                                <a href="shop-grid-right.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                                <a href="#">Shop Now <i class="fi-rs-arrow-right"></i></a>
                             </div>
                         </div>
                     @endif
