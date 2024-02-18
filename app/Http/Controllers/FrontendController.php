@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\CookieSD;
 use App\Models\ProductCategory;
 use Artesaos\SEOTools\Facades\SEOTools;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -10,7 +11,6 @@ class FrontendController extends Controller
 {
      //home
      function home(){
-
         //Meta SEO
         //SEOMeta::addMeta('title', 'Synex Digital | IT Solutions For Your Business Online Presence');
         SEOMeta::setTitle('Home');

@@ -1,6 +1,8 @@
 <?php
     use App\Models\ProductCategory;
+    use App\Models\Campaign;
     $categories = ProductCategory::All();
+    $camps       = Campaign::All();
 ?>
 <!-- Quick view -->
 <div class="modal fade custom-modal" id="quickViewModal" tabindex="-1" aria-labelledby="quickViewModalLabel"
@@ -180,11 +182,9 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>Get great devices up to 50% off <a href="{{ route('shop') }}">View details</a>
-                                </li>
-                                <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today <a href="{{ route('shop') }}">Shop
-                                        now</a></li>
+                                @foreach ($camps as $camp)
+                                    <li>{{ $camp->campaign_name }} <a href="{{ route('campaign.product.list',$camp->id) }}">Shop now</a>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
                 <div class="col-lg-12 col-md-12 text-center">
                     <h6 class="mt-0 mb-5 text-uppercase  text-brand font-sm wow fadeIn animated">About us</h6>
                     <h2 class="mb-15 text-grey-1 wow fadeIn animated">Our main branches<br> around the world</h2>
-                    <p class="w-50 m-auto text-grey-3 wow fadeIn animated">At vero eos et accusamus et iusto odio dignissimos ducimus quiblanditiis praesentium. ebitis nesciunt voluptatum dicta reprehenderit accusamus</p>
+                    <p class="w-50 m-auto text-grey-3 wow fadeIn animated">Familly Bazar is now one of the leading e-commerce organizations in Bangladesh. It is indeed the biggest online hypermarket in Bangladesh that helps you save time and money.</p>
                 </div>
             </div>
             <div class="row">

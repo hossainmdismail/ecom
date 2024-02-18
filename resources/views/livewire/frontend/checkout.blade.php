@@ -35,7 +35,7 @@
                                             {{-- <p class="font-xs">Maboriosam in a tonto nesciung eget<br> distingy magndapibus.
                                             </p> --}}
                                         </td>
-                                        <td class="price" data-title="Price"><span>{{ $product->finalPrice }} </span></td>
+                                        <td class="price" data-title="Price"><span>৳ {{ $product->finalPrice }} </span></td>
                                         <td class="text-center" data-title="Stock">
                                             <div class="detail-qty border radius  m-auto">
                                                 <a wire:click="decrement({{$product->id}})" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
@@ -45,7 +45,7 @@
                                             </div>
                                         </td>
                                         <td class="text-right" data-title="Cart">
-                                            <span>{{ $product->finalPrice *$product->quantity }} </span>
+                                            <span>৳ {{ $product->finalPrice *$product->quantity }} </span>
                                         </td>
                                         <td class="action" data-title="Remove"><a wire:click="remove({{$product->id}})" class="text-muted"><i class="fi-rs-trash"></i></a></td>
                                     </tr>

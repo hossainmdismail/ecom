@@ -450,18 +450,18 @@
         }
     });
 
-    $('.btn-close').on('click', function(e) {
-        $('.zoomContainer').remove();
-    });
+    // $('.btn-close').on('click', function(e) {
+    //     $('.zoomContainer').remove();
+    // });
 
-    $('#quickViewModal').on('show.bs.modal', function (e) {
-        $(document).click(function (e) {
-            var modalDialog = $('.modal-dialog');
-            if (!modalDialog.is(e.target) && modalDialog.has(e.target).length === 0) {
-                $('.zoomContainer').remove();
-            }
-        });
-    });
+    // $('#quickViewModal').on('show.bs.modal', function (e) {
+    //     $(document).click(function (e) {
+    //         var modalDialog = $('.modal-dialog');
+    //         if (!modalDialog.is(e.target) && modalDialog.has(e.target).length === 0) {
+    //             $('.zoomContainer').remove();
+    //         }
+    //     });
+    // });
 
     /*---------------------
         Select active
