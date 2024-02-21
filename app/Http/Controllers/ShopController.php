@@ -14,7 +14,7 @@ class ShopController extends Controller
         SEOTools::setDescription('Discover a world of convenience with online shopping at Familly Bazar in Bangladesh. Explore a diverse range of products, enjoy secure transactions, and doorstep delivery. Start your online shopping journey today');
         SEOMeta::addKeyword('Online Shopping Bangladesh');
 
-        SEOMeta::setCanonical('https://synexdigital.com' . request()->getPathInfo());
+        SEOMeta::setCanonical('https://famillybazar.com' . request()->getPathInfo());
         return view('frontend.shop');
     }
 }

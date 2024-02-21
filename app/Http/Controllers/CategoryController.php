@@ -19,7 +19,7 @@ class CategoryController extends Controller
             SEOMeta::addKeyword($category->seo_tags);
         }
 
-        SEOMeta::setCanonical('https://synexdigital.com' . request()->getPathInfo());
+        SEOMeta::setCanonical('https://famillybazar.com' . request()->getPathInfo());
         return view('frontend.category',['slugs' => $slugs]);
     }
 }

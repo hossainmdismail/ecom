@@ -28,6 +28,7 @@ class HomeController extends Controller
         SEOMeta::addMeta('title', 'Authentic Bangladeshi Handicrafts: Explore Artisan Creations at Familly Bazar');
         SEOTools::setDescription('Discover the rich heritage of Bangladesh through our exquisite handicrafts. Handmade with love by local artisans, our collection reflects the beauty and culture of Bangladesh. Shop now for unique pieces at Familly Bazar');
         SEOMeta::addKeyword('Bangladeshi Crafts, Handwoven Textiles, Dhaka Topi');
+        SEOMeta::setCanonical('https://famillybazar.com' . request()->getPathInfo());
         return view('frontend.about');
     }
 
@@ -40,6 +41,7 @@ class HomeController extends Controller
         SEOMeta::addMeta('title', 'Privacy Policy | Familly Bazar Bangladesh');
         SEOTools::setDescription('Discover the rich heritage of Bangladesh through our exquisite handicrafts. Handmade with love by local artisans, our collection reflects the beauty and culture of Bangladesh. Shop now for unique pieces at Familly Bazar');
         SEOMeta::addKeyword('Bangladeshi Crafts, Handwoven Textiles, Dhaka Topi');
+        SEOMeta::setCanonical('https://famillybazar.com' . request()->getPathInfo());
         return view('frontend.privacy');
     }
 }

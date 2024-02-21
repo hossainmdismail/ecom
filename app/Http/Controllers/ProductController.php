@@ -25,7 +25,7 @@ class ProductController extends Controller
             SEOMeta::addKeyword($product->seo_tags);
         }
 
-        SEOMeta::setCanonical('https://synexdigital.com' . request()->getPathInfo());
+        SEOMeta::setCanonical('https://famillybazar.com' . request()->getPathInfo());
 
         return view('frontend.productView',[
             'product' => $product,

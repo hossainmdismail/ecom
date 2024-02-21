@@ -26,7 +26,7 @@ $config = Config::first();
         fbq('init', '3722181268063896');
         fbq('track', 'PageView');
         </script>
-        <noscript><img height="1" width="1" style="display:none"
+    <noscript><img height="1" width="1" style="display:none"
         src="https://www.facebook.com/tr?id=3722181268063896&ev=PageView&noscript=1"
         /></noscript>
     <!-- End Meta Pixel Code -->
