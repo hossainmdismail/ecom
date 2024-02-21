@@ -61,14 +61,20 @@
                                     <div class="mb-2">
                                         <h4>Delivery Area</h4>
                                     </div>
-                                    @foreach ($shippings as $key => $shipping)
-                                        <div class="form-check">
-                                            <input class="form-check-input" wire:click="ship({{ $shipping->id }})" type="radio" model id="flexRadioDefault{{ $key+1 }}" >
-                                            <label class="form-check-label" for="flexRadioDefault{{ $key+1 }}">
-                                                {{ $shipping->name }} <span style="color: black;font-size: 12px; padding-left: 4px; font-weight: 900;">{{ $shipping->price }}</span>
-                                            </label>
-                                          </div>
-                                    @endforeach
+
+                                    <div class="frb-group">
+                                        @foreach ($shippings as $key => $shipping)
+                                            <div class="frb frb-primary">
+                                                <input type="radio" wire:click="ship({{ $shipping->id }})" id="radio-button-{{ $key+1 }}" name="radio-button">
+                                                <label for="radio-button-{{ $key+1 }}">
+                                                    <span class="frb-title">{{ $shipping->name }}</span>
+                                                    <span class="frb-description">৳ {{ $shipping->price }}</span>
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+
                                 </div>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control input-sm @error('name') is-invalid @enderror" wire:model="name" aria-label="lg" placeholder="Name">
