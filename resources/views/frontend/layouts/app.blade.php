@@ -15,6 +15,15 @@ $config = Config::first();
     {!! SEO::generate() !!}
 
     <meta name="google-site-verification" content="p_MdsFzWZru0FnteMLV_M4hq5tSnaj1ZjR-7ClZv3wg" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7PMCTTW5P"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Q7PMCTTW5P');
+    </script>
     <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
