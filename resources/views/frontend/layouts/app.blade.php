@@ -13,6 +13,8 @@ $config = Config::first();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="author" content="Familly Bazar">
     {!! SEO::generate() !!}
+
+    <meta name="google-site-verification" content="p_MdsFzWZru0FnteMLV_M4hq5tSnaj1ZjR-7ClZv3wg" />
     <!-- Meta Pixel Code -->
     <script>
         !function(f,b,e,v,n,t,s)
