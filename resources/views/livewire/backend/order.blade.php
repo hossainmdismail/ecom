@@ -1,3 +1,26 @@
+@php
+    function getStatusColor($status) {
+        switch ($status) {
+            case 'pending':
+                return 'warning';
+            case 'processing':
+                return 'info';
+            case 'shipping':
+                return 'primary';
+            case 'return':
+                return 'secondary';
+            case 'cancel':
+                return 'danger';
+            case 'damage':
+                return 'dark';
+            case 'delieverd':
+                return 'success';
+            default:
+                return 'secondary';
+        }
+    }
+@endphp
+
 <form action="{{ route('csv.download') }}" method="POST" class="content-main">
     @csrf
     <div class="content-header">
@@ -58,7 +81,9 @@
                                 </b></td>
                                 <td>{{ $order->number }}</td>
                                 <td>৳ {{ $order->price }}</td>
-                                <td><span class="badge rounded-pill alert-warning">{{ $order->status }}</span></td>
+                                <td><span class="badge rounded-pill alert-{{ getStatusColor($order->status) }}">
+                                    {{ $order->status }}
+                                </span></td>
                                 <td>{{ $order->created_at->format('D M y') }}</td>
                                 <td class="text-end">
                                     <a href="{{ route('admin.order.view',$order->id) }}" class="btn btn-md rounded font-sm">Detail</a>

@@ -68,7 +68,7 @@ class Checkout extends Component
         $cookieData = CookieSD::data();
 
         //dd($cookieData['products']);
-        $orderID = 'ORD' . now()->format('YmdHis'). strtoupper(Str::random(4));
+        $orderID = 'OD' . now()->format('md'). strtoupper(Str::random(4)).now()->format('Hs');
 
         $order = new Order();
         $order->order_id     = $orderID;

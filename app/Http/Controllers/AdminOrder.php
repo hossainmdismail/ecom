@@ -38,7 +38,7 @@ class AdminOrder extends Controller
 
         if ($request->btn == 1 && $request->status != null && $order) {
             $order->status      = $request->status;
-            $order->message     = $request->note;
+            $order->message     = $request->notes;
             $order->save();
             return back()->with('succ','updated');
         }elseif ($request->btn == 2 && $order) {

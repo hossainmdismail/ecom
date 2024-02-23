@@ -19,9 +19,18 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a class="menu-link" href="{{ route('employee.index') }}"> <i class="icon material-icons md-add_box"></i>
-                    <span class="text">Employee</span>
+                <a class="menu-link" href="{{ route('admin.order') }}"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Order</span>
                 </a>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">product</span>
+                </a>
+                <div class="submenu">
+                    <a href="{{ route('product.index') }}">Product List</a>
+                    <a href="{{ route('product.create') }}">Add product</a>
+                </div>
             </li>
             <li class="menu-item has-submenu">
                 <a class="menu-link" href="#"> <i class="icon material-icons md-shopping_bag"></i>
@@ -30,6 +39,15 @@
                 <div class="submenu">
                     <a href="{{ route('category.index') }}">Category List</a>
                     <a href="{{ route('category.create') }}">Create Category</a>
+                </div>
+            </li>
+            <li class="menu-item has-submenu">
+                <a class="menu-link" href="#"> <i class="icon material-icons md-store"></i>
+                    <span class="text">Service</span>
+                </a>
+                <div class="submenu">
+                    <a href="{{ route('variation.index') }}">Service List</a>
+                    <a href="{{ route('variation.create') }}">Create Service</a>
                 </div>
             </li>
             <li class="menu-item has-submenu">
@@ -50,32 +68,14 @@
                     <a href="{{ route('campaign.create') }}">Create Campaign</a>
                 </div>
             </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="#"> <i class="icon material-icons md-store"></i>
-                    <span class="text">Service</span>
-                </a>
-                <div class="submenu">
-                    <a href="{{ route('variation.index') }}">Service List</a>
-                    <a href="{{ route('variation.create') }}">Create Service</a>
-                </div>
-            </li>
-            <li class="menu-item has-submenu">
-                <a class="menu-link" href="#"> <i class="icon material-icons md-add_box"></i>
-                    <span class="text">product</span>
-                </a>
-                <div class="submenu">
-                    <a href="{{ route('product.index') }}">Product List</a>
-                    <a href="{{ route('product.create') }}">Add product</a>
-                </div>
-            </li>
-            <li class="menu-item">
-                <a class="menu-link" href="{{ route('admin.order') }}"> <i class="icon material-icons md-add_box"></i>
-                    <span class="text">Order</span>
-                </a>
-            </li>
             <li class="menu-item">
                 <a class="menu-link" href="{{ route('shipping.index') }}"> <i class="icon material-icons md-add_box"></i>
                     <span class="text">Shipping</span>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" href="{{ route('employee.index') }}"> <i class="icon material-icons md-add_box"></i>
+                    <span class="text">Employee</span>
                 </a>
             </li>
             <li class="menu-item">

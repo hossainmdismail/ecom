@@ -1,5 +1,26 @@
 @extends('backend.master')
-
+@php
+    function getStatusColor($status) {
+        switch ($status) {
+            case 'pending':
+                return 'warning';
+            case 'processing':
+                return 'info';
+            case 'shipping':
+                return 'primary';
+            case 'return':
+                return 'secondary';
+            case 'cancel':
+                return 'danger';
+            case 'damage':
+                return 'dark';
+            case 'delieverd':
+                return 'success';
+            default:
+                return 'secondary';
+        }
+    }
+@endphp
 @section('content')
 <form class="content-main" action="{{ route('admin.order.modify') }}" method="POST">
     @csrf
@@ -8,6 +29,9 @@
         <div>
             <h2 class="content-title card-title">Order detail</h2>
             <p>Details for Order ID: {{ $order->order_id }}</p>
+        </div>
+        <div>
+            <a class="btn btn-primary" href="{{ route('admin.order') }}">Back</a>
         </div>
     </div>
     <div class="card">
@@ -131,7 +155,7 @@
                                                 <dl class="dlist">
                                                     <dt class="text-muted">Status:</dt>
                                                     <dd>
-                                                        <span class="badge rounded-pill alert-success text-success">{{ $order->status }}</span>
+                                                        <span class="badge rounded-pill alert-{{ getStatusColor($order->status) }}">{{ $order->status }}</span>
                                                     </dd>
                                                 </dl>
                                             </article>
@@ -146,7 +170,7 @@
                 <div class="col-lg-4">
                     <div class="box shadow-sm bg-light">
                         <h6 class="mb-15">Payment info</h6>
-                        <p>Pending...</p>
+                        <p>{{ $order->status == 'delieverd'?'Paid':'Pending' }}</p>
                         {{-- <p>
                             <img src="assets/imgs/card-brands/2.png" class="border" height="20"> Master Card **** **** 4768 <br>
                             Business name: Grand Market LLC <br>
