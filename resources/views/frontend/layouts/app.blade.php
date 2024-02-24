@@ -17,6 +17,13 @@ $config = Config::first();
     <meta name="google-site-verification" content="p_MdsFzWZru0FnteMLV_M4hq5tSnaj1ZjR-7ClZv3wg" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7PMCTTW5P"></script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-T5VLKVGV');</script>
+    <!-- End Google Tag Manager -->
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -68,6 +75,12 @@ $config = Config::first();
     {{-- footer --}}
     @include('frontend.layouts.footer')
 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5VLKVGV"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <!-- Vendor JS-->
     <script src="{{ asset('frontend') }}/js/vendor/modernizr-3.6.0.min.js"></script>
     <script src="{{ asset('frontend') }}/js/vendor/jquery-3.6.0.min.js"></script>
