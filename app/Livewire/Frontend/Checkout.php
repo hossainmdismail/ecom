@@ -96,7 +96,16 @@ class Checkout extends Component
         $this->shippingPrice = 0;
         Cookie::queue(Cookie::forget('product_data'));
         $this->dispatch('post-created');
-        return redirect()->route('thankyou');
+
+        $ids = [];
+        foreach ($cookieData['products'] as $value) {
+            $ids[] =$value->id;
+        }
+
+        return redirect()->route('thankyou')->with([
+            'data' => $cookieData,
+            'ids' => json_encode($ids),
+        ]);
     }
 
     public function ship($id){

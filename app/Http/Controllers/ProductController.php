@@ -34,21 +34,49 @@ class ProductController extends Controller
     }
 
     public function cart(Request $request){
-        // dd($request->all());
         $request->validate([
             'qnt'   => 'required',
             'id'    => 'required',
             'btn'   => 'required',
         ]);
 
+        // Your existing logic for adding to cart
         if ($request->btn == 'cart') {
             CookieSD::addToCookie($request->id, $request->qnt);
-            return back();
-        }
-        if ($request->btn == 'buy') {
+        } elseif ($request->btn == 'buy') {
             CookieSD::addToCookie($request->id, $request->qnt);
-            return redirect()->route('checkout');
+            // Add any additional logic for processing a purchase (e.g., redirect to checkout)
+        }
+
+        // Facebook Pixel events
+        if ($request->btn == 'cart' || $request->btn == 'buy') {
+            $product = Product::find($request->id);
+
+            return back()->with(['add'=> $product ,'qnt' => $request->qnt]);
+
+            if ($request->btn == 'buy') {
+                return redirect()->route('checkout')->with(['add',$product]);
+            }
         }
     }
+
+
+    // public function cart(Request $request){
+    //     // dd($request->all());
+    //     $request->validate([
+    //         'qnt'   => 'required',
+    //         'id'    => 'required',
+    //         'btn'   => 'required',
+    //     ]);
+
+    //     if ($request->btn == 'cart') {
+    //         CookieSD::addToCookie($request->id, $request->qnt);
+    //         return back();
+    //     }
+    //     if ($request->btn == 'buy') {
+    //         CookieSD::addToCookie($request->id, $request->qnt);
+    //         return redirect()->route('checkout');
+    //     }
+    // }
 
 }

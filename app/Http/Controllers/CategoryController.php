@@ -17,9 +17,14 @@ class CategoryController extends Controller
             SEOMeta::addMeta('title', $category->seo_title);
             SEOTools::setDescription($category->seo_description);
             SEOMeta::addKeyword($category->seo_tags);
+        }else {
+            return back();
         }
 
         SEOMeta::setCanonical('https://famillybazar.com' . request()->getPathInfo());
-        return view('frontend.category',['slugs' => $slugs]);
+        return view('frontend.category',[
+            'slugs'     => $slugs,
+            'category'  => $category,
+        ]);
     }
 }

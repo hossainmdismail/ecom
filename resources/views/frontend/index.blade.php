@@ -67,5 +67,14 @@
         </div>
     </section>
     @livewire('frontend.product')
+    <div itemscope itemtype="http://schema.org/Product">
+        <h1 itemprop="name">Product Name</h1>
+        <img itemprop="image" src="product-image.jpg" alt="Product Image">
+        <p itemprop="description">Product description goes here.</p>
+        <span itemprop="price">19.99</span>
+        <link itemprop="url" href="product-url">
+        <meta itemprop="availability" content="In Stock">
+        <!-- Add more properties as needed -->
+    </div>
 </main>
 @endsection
