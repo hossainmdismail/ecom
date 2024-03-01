@@ -45,6 +45,7 @@ class ProductController extends Controller
             CookieSD::addToCookie($request->id, $request->qnt);
         } elseif ($request->btn == 'buy') {
             CookieSD::addToCookie($request->id, $request->qnt);
+            return redirect()->route('checkout');
             // Add any additional logic for processing a purchase (e.g., redirect to checkout)
         }
 
