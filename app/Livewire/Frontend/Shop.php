@@ -21,12 +21,12 @@ class Shop extends Component
     public function render()
     {
         $category = ProductCategory::all(); //Getting Category
-        $featured   = Product::where('featured', 1)->latest()->get()->take(4);
+        $featured   = Product::where('status',1)->where('featured', 1)->latest()->get()->take(4);
         // $cate = ProductCategory::select('id','slugs')->where('slugs',$this->slugs)->first(); //Getting Category ID
         $ads = Campaign::where('image_type','horizontal')->first();
 
         $product = Product::query();
-        $products = $product->latest()->paginate($this->paginateCount != null ? $this->paginateCount:10);
+        $products = $product->where('status',1)->latest()->paginate($this->paginateCount != null ? $this->paginateCount:10);
 
         return view('livewire.frontend.shop',[
             'products'      => $products,
