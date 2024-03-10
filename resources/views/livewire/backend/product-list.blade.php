@@ -15,15 +15,15 @@
                     <input type="text" placeholder="Search..." class="form-control" wire:model.live="search">
                 </div>
                 <div class="col-lg-2 col-6 col-md-3">
-                    <select class="form-select">
-                        <option>Category</option>
+                    <select wire:model.live="category" class="form-select">
+                        <option value="">Category</option>
                         @foreach ($categories as $categorie)
                             <option value="{{ $categorie->id }}">{{ $categorie->category_name }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-lg-2 col-6 col-md-3">
-                    <select class="form-select">
+                    <select wire:model.live="status" class="form-select">
                         <option value="1">Active</option>
                         <option value="0">Draft</option>
                     </select>
@@ -65,7 +65,7 @@
                                 </td>
                                 <td>
                                     <span
-                                        class="badge bg-success text-dark">{{ $request->status == 1 ? 'Active' : 'Draft' }}</span>
+                                        class="badge bg-{{ $request->status == 1 ? 'success' : 'warning' }} text-dark">{{ $request->status == 1 ? 'Active' : 'Draft' }}</span>
                                 </td>
 
                                 <td>
